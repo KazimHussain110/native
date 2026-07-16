@@ -204,14 +204,11 @@ function FloatingProduct({
       >
         <div
           className="relative h-full w-full"
-          style={
-            {
-              // @ts-expect-error css var
-              "--rot": `${item.rot}deg`,
-              animation: `float-y ${item.drift}s ease-in-out ${item.delay}s infinite`,
-              transformStyle: "preserve-3d",
-            } as React.CSSProperties
-          }
+          style={{
+            ["--rot" as string]: `${item.rot}deg`,
+            animation: `float-y ${item.drift}s ease-in-out ${item.delay}s infinite`,
+            transformStyle: "preserve-3d",
+          } as React.CSSProperties}
         >
           {/* Glow behind */}
           <div
