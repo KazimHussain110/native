@@ -1,24 +1,53 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/site/Nav";
+import { Hero } from "@/components/site/Hero";
+import { ClientMarquee } from "@/components/site/ClientMarquee";
+import { ProductShowcase } from "@/components/site/ProductShowcase";
+import { Process } from "@/components/site/Process";
+import { Industries } from "@/components/site/Industries";
+import { Sustainability } from "@/components/site/Sustainability";
+import { Stats } from "@/components/site/Stats";
+import { Testimonials } from "@/components/site/Testimonials";
+import { Contact, Footer } from "@/components/site/Contact";
+import { CursorGlow } from "@/components/site/CursorGlow";
+import { ScrollProgress } from "@/components/site/ScrollProgress";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "VerdantVessel — Luxury Packaging Manufacturing" },
+      {
+        name: "description",
+        content:
+          "Premium manufacturer of glass, PET, aluminum and cosmetic packaging. Vessels engineered for the world's most demanding brands.",
+      },
+      { property: "og:title", content: "VerdantVessel — Luxury Packaging Manufacturing" },
+      {
+        property: "og:description",
+        content:
+          "Glass, PET, aluminum, jars and custom packaging — designed, moulded and finished in-house.",
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="relative bg-background">
+      <ScrollProgress />
+      <CursorGlow />
+      <Nav />
+      <Hero />
+      <ClientMarquee />
+      <ProductShowcase />
+      <Process />
+      <Industries />
+      <Stats />
+      <Sustainability />
+      <Testimonials />
+      <Contact />
+      <Footer />
+    </main>
   );
 }
