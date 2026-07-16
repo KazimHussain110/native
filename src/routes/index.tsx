@@ -26,7 +26,7 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Glass, PET, aluminum, jars and custom packaging — designed, moulded and finished in-house.",
+          "Premium manufacturer of glass, PET, aluminum and cosmetic packaging. Vessels engineered for the world's most demanding brands.",
       },
     ],
   }),
