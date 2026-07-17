@@ -79,8 +79,12 @@ function Card({
       >
         {/* Front */}
         <div
-          className="glass absolute inset-0 flex flex-col justify-between overflow-hidden rounded-2xl p-5"
-          style={{ backfaceVisibility: "hidden" }}
+          className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-2xl p-5"
+          style={{
+            backfaceVisibility: "hidden",
+            background: "oklch(0.1 0.008 160)",
+            border: "1px solid color-mix(in oklab, oklch(1 0 0) 8%, transparent)",
+          }}
         >
           <div className="flex items-start justify-between">
             <span className="text-2xl text-gold/60">{industry.icon}</span>
@@ -139,8 +143,12 @@ export function Industries() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.7, delay: i * 0.07 }}
-              className="glass flex flex-col justify-between rounded-2xl p-5"
-              style={{ minHeight: 160 }}
+              className="flex flex-col justify-between rounded-2xl p-5"
+              style={{
+                minHeight: 160,
+                background: "color-mix(in oklab, oklch(1 0 0) 4%, transparent)",
+                border: "1px solid color-mix(in oklab, oklch(1 0 0) 8%, transparent)",
+              }}
             >
               <div className="flex items-start justify-between">
                 <span className="text-2xl text-gold/60">{ind.icon}</span>
