@@ -6,22 +6,23 @@ import { products } from "@/routes/products/$slug";
 const SPRING = { type: "spring" as const, stiffness: 400, damping: 40, mass: 0.6 };
 const CIRCUMFERENCE = 2 * Math.PI * 20;
 
-function Stars({ rating }: { rating: number }) {
+function Stars({ rating, uid }: { rating: number; uid: string }) {
   return (
     <div className="flex items-center gap-0.5">
       {[1, 2, 3, 4, 5].map((s) => {
         const fill = Math.min(1, Math.max(0, rating - (s - 1)));
+        const id = `sg-${uid}-${s}`;
         return (
           <svg key={s} width="13" height="13" viewBox="0 0 24 24">
             <defs>
-              <linearGradient id={`sg-${s}-${rating}`}>
+              <linearGradient id={id}>
                 <stop offset={`${fill * 100}%`} stopColor="oklch(0.78 0.14 85)" />
                 <stop offset={`${fill * 100}%`} stopColor="oklch(0.78 0.14 85 / 0.2)" />
               </linearGradient>
             </defs>
             <polygon
               points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
-              fill={`url(#sg-${s}-${rating})`}
+              fill={`url(#${id})`}
             />
           </svg>
         );
@@ -78,7 +79,7 @@ function ProductCard({
         <div>
           <h3 className="text-base md:text-xl">{p.title}</h3>
           <div className="mt-1.5 flex items-center gap-2">
-            <Stars rating={p.rating} />
+            <Stars rating={p.rating} uid={p.slug} />
             <span className="text-[11px] text-muted-foreground">({p.reviews})</span>
           </div>
           <p className="mt-1.5 text-base font-semibold text-gold md:text-lg">{p.price}</p>
@@ -178,7 +179,7 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
             <p className="mt-1 text-xs text-muted-foreground">per unit · MOQ 5,000</p>
 
             <div className="mt-6 flex items-center gap-3">
-              <Stars rating={p.rating} />
+              <Stars rating={p.rating} uid={`expanded-${p.slug}`} />
               <span className="text-sm text-foreground">{p.rating}</span>
               <span className="text-xs text-muted-foreground">({p.reviews})</span>
             </div>
@@ -240,7 +241,7 @@ export function ProductShowcase() {
       />
 
       <LayoutGroup>
-        <div className="mx-auto mt-20 grid max-w-7xl grid-cols-2 gap-4 px-6 md:grid-cols-4 md:gap-6">
+        <div className="mx-auto mt-20 grid max-w-7xl grid-cols-2 gap-4 px-6 md:grid-cols-4 md:gap-6" style={{ isolation: "isolate" }}>
           {products.map((p, i) => (
             <ProductCard
               key={p.slug}

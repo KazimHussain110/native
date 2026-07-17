@@ -359,7 +359,7 @@ export function Footer() {
             transition={{ duration: 0.8 }}
             className="col-span-2 md:col-span-1 flex flex-col gap-7"
           >
-            <img src="/logo.png" alt="Native Rituals" className="h-8 w-auto self-start" />
+            <img src="/logo.png" alt="Native Rituals" className="h-18 w-auto self-start" />
             <p className="max-w-[22ch] text-sm leading-relaxed text-muted-foreground">
               Himalayan Shilajit and Ayurvedic adaptogens — sourced at origin,
               tested for purity, crafted for the modern body.
@@ -374,17 +374,6 @@ export function Footer() {
                 >
                   {s}
                 </a>
-              ))}
-            </div>
-            {/* Trust badges */}
-            <div className="flex flex-wrap gap-2">
-              {["Lab Tested", "GMP Certified", "No Fillers"].map((b) => (
-                <span
-                  key={b}
-                  className="rounded-full border border-white/8 px-3 py-1 text-[9px] uppercase tracking-[0.2em] text-muted-foreground/50"
-                >
-                  {b}
-                </span>
               ))}
             </div>
           </motion.div>
