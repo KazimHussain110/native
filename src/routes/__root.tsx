@@ -4,11 +4,13 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, useRef, type ReactNode } from "react";
 import { StoreProvider } from "@/lib/store";
+import { Loader } from "@/components/site/Loader";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -125,10 +127,30 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const href = useRouterState({ select: (s) => s.location.href });
+  const [loading, setLoading] = useState(true);
+  const prevHref = useRef(href);
+  const timer = useRef<ReturnType<typeof setTimeout>>(null);
+
+  useEffect(() => {
+    // Dismiss initial load
+    timer.current = setTimeout(() => setLoading(false), 1200);
+    return () => { if (timer.current) clearTimeout(timer.current); };
+  }, []);
+
+  useEffect(() => {
+    if (href !== prevHref.current) {
+      prevHref.current = href;
+      setLoading(true);
+      if (timer.current) clearTimeout(timer.current);
+      timer.current = setTimeout(() => setLoading(false), 600);
+    }
+  }, [href]);
 
   return (
     <QueryClientProvider client={queryClient}>
       <StoreProvider>
+        <Loader visible={loading} />
         <Outlet />
       </StoreProvider>
     </QueryClientProvider>
