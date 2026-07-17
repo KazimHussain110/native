@@ -1,6 +1,6 @@
 const clients = [
-  "AURELIA", "MAISON NOIR", "VERT&CO", "OKAYA", "LARK", "NIVA",
-  "HELIOS", "ATELIER 06", "SOLENNE", "PALOMA", "KIN·DO", "SAVANT",
+  "SHILAJIT", "ASHWAGANDHA", "PURE RESIN", "ADAPTOGEN", "HIMALAYAN", "AYURVEDA",
+  "SHILAJIT SHOTS", "FULVIC ACID", "ANCIENT HERB", "VITALITY", "GROUNDING", "RITUAL",
 ];
 
 export function ClientMarquee() {
@@ -8,7 +8,7 @@ export function ClientMarquee() {
   return (
     <section className="relative border-y border-white/5 py-10">
       <p className="mb-6 text-center text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
-        Trusted by 400+ brands in 42 countries
+        Rooted in Ayurveda · Trusted by 10,000+ customers
       </p>
       <div className="relative overflow-hidden mask-fade">
         <div

@@ -2,10 +2,10 @@ import { motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 46, suffix: "yrs", label: "in craft" },
-  { value: 400, suffix: "+", label: "brand partners" },
-  { value: 42, suffix: "", label: "countries served" },
-  { value: 98, suffix: "%", label: "recyclable output" },
+  { value: 3,    suffix: "+",  label: "years sourcing" },
+  { value: 10,   suffix: "k+", label: "customers" },
+  { value: 85,   suffix: "+",  label: "trace minerals" },
+  { value: 100,  suffix: "%",  label: "lab verified" },
 ];
 
 function Counter({ to, suffix }: { to: number; suffix: string }) {
