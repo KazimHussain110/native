@@ -117,13 +117,11 @@
 
 @utility glass {
   background: color-mix(in oklab, oklch(1 0 0) 4%, transparent);
-  backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid color-mix(in oklab, oklch(1 0 0) 8%, transparent);
 }
 
 @utility glass-strong {
   background: color-mix(in oklab, oklch(1 0 0) 6%, transparent);
-  backdrop-filter: blur(28px) saturate(160%);
   border: 1px solid color-mix(in oklab, var(--gold) 14%, transparent);
 }
 

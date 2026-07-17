@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Search, Menu, X } from "lucide-react";
+import { Menu, X, ShoppingCart, Heart } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { useStore } from "@/lib/store";
+
+function useStoreSafe() {
+  try { return useStore(); } catch { return { cart: [], wishlist: [] }; }
+}
 
 const NAV = [
-  { label: "Products", href: "#products" },
+  { label: "Products", href: "/shop" },
   { label: "Benefits", href: "#process" },
   { label: "Our Story", href: "#sustainability" },
   { label: "Contact", href: "#contact" },
@@ -13,6 +19,7 @@ export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#products");
+  const { cart, wishlist } = useStoreSafe();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -55,7 +62,7 @@ export function Nav() {
         }`}
       >
         {/* Logo */}
-        <a href="#top" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img src="/logo.png" alt="Native Rituals" className="h-8 w-auto" />
         </a>
 
@@ -80,10 +87,42 @@ export function Nav() {
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center gap-2">
-          <button className="hidden h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-white/10 hover:text-gold md:grid">
-            <Search className="h-4 w-4" />
-          </button>
+        <div className="flex items-center gap-1">
+          {/* Wishlist */}
+          <Link
+            to="/wishlist"
+            className="relative hidden h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-white/10 hover:text-gold md:grid"
+          >
+            <Heart className="h-4 w-4" />
+            {wishlist.length > 0 && (
+              <span className="absolute right-1.5 top-1.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-gold text-[8px] font-bold text-ink">
+                {wishlist.length}
+              </span>
+            )}
+          </Link>
+
+          {/* Cart */}
+          <Link
+            to="/cart"
+            className="relative hidden h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-white/10 hover:text-gold md:grid"
+          >
+            <ShoppingCart className="h-4 w-4" />
+            {cart.length > 0 && (
+              <span className="absolute right-1.5 top-1.5 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-gold text-[8px] font-bold text-ink">
+                {cart.length}
+              </span>
+            )}
+          </Link>
+
+          {/* Shop Now CTA */}
+          <Link
+            to="/shop"
+            className="hidden rounded-full bg-gradient-to-r from-[oklch(0.88_0.1_90)] via-[oklch(0.78_0.14_85)] to-[oklch(0.62_0.13_78)] px-5 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-ink transition-opacity hover:opacity-90 md:block"
+          >
+            Shop Now
+          </Link>
+
+          {/* Mobile hamburger */}
           <button
             onClick={() => setOpen((v) => !v)}
             className="grid h-10 w-10 place-items-center rounded-full text-foreground md:hidden"
@@ -114,7 +153,14 @@ export function Nav() {
                   {n.label}
                 </a>
               ))}
-
+              <div className="mt-2 flex gap-2 border-t border-white/5 pt-3">
+                <Link to="/wishlist" onClick={() => setOpen(false)} className="flex flex-1 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs text-muted-foreground hover:bg-white/10 hover:text-gold">
+                  <Heart className="h-4 w-4" /> Wishlist {wishlist.length > 0 && `(${wishlist.length})`}
+                </Link>
+                <Link to="/cart" onClick={() => setOpen(false)} className="flex flex-1 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs text-muted-foreground hover:bg-white/10 hover:text-gold">
+                  <ShoppingCart className="h-4 w-4" /> Cart {cart.length > 0 && `(${cart.length})`}
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

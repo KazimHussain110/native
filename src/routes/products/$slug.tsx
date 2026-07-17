@@ -1,5 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
+import { Nav } from "@/components/site/Nav";
+import { Footer } from "@/components/site/Contact";
+import { CursorGlow } from "@/components/site/CursorGlow";
 
 export const products = [
   {
@@ -9,7 +12,6 @@ export const products = [
     price: "$49.99",
     rating: 4.9,
     reviews: 1284,
-    tag: "Himalayan · Grade A",
     details: ["85+ minerals", "Fulvic acid rich", "Lab tested", "100% pure"],
     desc: "Authentic Grade-A Himalayan Shilajit resin, harvested at 16,000ft. Rich in fulvic acid and 85+ trace minerals. Zero fillers, zero additives — just pure ancient resin as nature intended.",
   },
@@ -20,7 +22,6 @@ export const products = [
     price: "$34.99",
     rating: 4.8,
     reviews: 876,
-    tag: "KSM-66 · Root Extract",
     details: ["KSM-66 certified", "5% withanolides", "Stress relief", "Vegan caps"],
     desc: "Full-spectrum KSM-66 Ashwagandha root extract standardised to 5% withanolides. Clinically studied for stress, cortisol balance and sustained energy without stimulants.",
   },
@@ -31,7 +32,6 @@ export const products = [
     price: "$29.99",
     rating: 4.7,
     reviews: 643,
-    tag: "Daily Shot · 30ml",
     details: ["Ready to drink", "No sugar", "Fulvic + B12", "30-day supply"],
     desc: "Daily 30ml Shilajit shots blended with Vitamin B12 and adaptogenic herbs. No sugar, no fillers. The fastest way to bring ancient mineral intelligence into your modern morning.",
   },
@@ -42,7 +42,6 @@ export const products = [
     price: "$99.99",
     rating: 5.0,
     reviews: 412,
-    tag: "Bundle · Best Value",
     details: ["All 3 products", "Save 25%", "Free shipping", "30-day supply"],
     desc: "The complete Native Rituals stack — Shilajit Resin, Ashwagandha Extract and Shilajit Shots together. Everything you need to build a daily ritual that actually works.",
   },
@@ -93,19 +92,21 @@ function ProductPage() {
 
   return (
     <main className="relative min-h-screen bg-background">
+      <CursorGlow />
+      <Nav />
       <div className="pointer-events-none fixed inset-0 -z-10">
         <div className="hero-glow-gold absolute left-1/2 top-1/3 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30" />
       </div>
 
       <div className="mx-auto max-w-6xl px-6 py-24">
-        <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
+        {/* <motion.div initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}>
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-muted-foreground transition-colors hover:text-gold"
           >
             ← Back
           </Link>
-        </motion.div>
+        </motion.div> */}
 
         <div className="mt-12 grid items-center gap-16 lg:grid-cols-2">
           <motion.div
@@ -127,7 +128,6 @@ function ProductPage() {
             transition={{ duration: 0.9, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
             className="flex flex-col gap-5"
           >
-            <p className="text-[10px] uppercase tracking-[0.35em] text-gold/70">{product.tag}</p>
             <h1 className="text-4xl leading-[1.05] md:text-5xl lg:text-6xl">{product.title}</h1>
 
             <div className="flex items-center gap-3">
@@ -158,6 +158,7 @@ function ProductPage() {
           </motion.div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }
