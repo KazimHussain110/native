@@ -40,11 +40,11 @@ function Index() {
       <Hero />
       <ClientMarquee />
       <ProductShowcase />
+      <Sustainability />
       <Process />
       <ProcessCircuit />
       <Industries />
       <Stats />
-      <Sustainability />
       <Testimonials />
       <Contact />
       <Footer />
