@@ -10,8 +10,8 @@ function useStoreSafe() {
 
 const NAV = [
   { label: "Products", href: "/shop" },
-  { label: "Benefits", href: "#process" },
-  { label: "Our Story", href: "#sustainability" },
+  { label: "Benefits", href: "/#process" },
+  { label: "Our Story", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 

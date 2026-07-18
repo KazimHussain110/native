@@ -78,14 +78,14 @@ export function Footer() {
     <footer className="relative overflow-hidden bg-[oklch(0.08_0.01_90)]">
 
       {/* ── Giant NATIVE wordmark + centred logo ── */}
-      <div className="relative flex items-center justify-center">
+      <div className="relative flex items-center justify-center px-4 md:px-0">
         {/* Background wordmark */}
         <div
           aria-hidden
           className="select-none whitespace-nowrap leading-none tracking-tighter"
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(8rem, 22vw, 20rem)",
+            fontSize: "clamp(4rem, 22vw, 20rem)",
             fontWeight: 800,
             textTransform: "uppercase",
             ...GOLD_TEXT,
@@ -96,25 +96,25 @@ export function Footer() {
 
         {/* Centred logo overlay */}
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-          <img src="/logo.png" alt="Native Rituals" className="h-24 w-auto md:h-32" />
+          <img src="/logo.png" alt="Native Rituals" className="h-16 w-auto md:h-32" />
         </div>
       </div>
 
       {/* ── Follow Us row ── */}
-      <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 px-8 py-8">
+      <div className="flex flex-col items-center gap-4 px-6 py-8 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-8 sm:gap-y-4 md:px-8">
         <span
-          className="text-[clamp(1.4rem,3vw,2.2rem)] font-bold uppercase tracking-tight text-white"
+          className="text-xl font-bold uppercase tracking-tight text-white sm:text-[clamp(1.4rem,3vw,2.2rem)]"
           style={{ fontFamily: "var(--font-display)" }}
         >
           Follow Us —
         </span>
 
-        <div className="flex flex-wrap items-center gap-x-8">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 sm:gap-x-8">
           {SOCIALS.map((s) => (
             <a
               key={s}
               href="#"
-              className="text-[clamp(1rem,2vw,1.6rem)] font-bold uppercase tracking-[0.15em] text-white transition-colors hover:text-white/70"
+              className="text-sm font-bold uppercase tracking-[0.15em] text-white transition-colors hover:text-white/70 sm:text-[clamp(1rem,2vw,1.6rem)]"
             >
               {s}
             </a>
@@ -123,8 +123,8 @@ export function Footer() {
       </div>
 
       {/* ── Bottom copyright bar ── */}
-      <div className="flex flex-wrap items-center justify-center gap-6 px-8 py-5 text-[10px] uppercase tracking-[0.25em] text-white/60">
-        <span className="text-white/20">|</span>
+      <div className="flex flex-col items-center gap-2 px-6 py-5 text-[10px] uppercase tracking-[0.25em] text-white/60 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-6">
+        <span className="hidden text-white/20 sm:inline">|</span>
         <a href="#" className="transition-colors hover:text-white/40">Terms &amp; Conditions</a>
         <span className="text-white/20">|</span>
         <a href="#" className="transition-colors hover:text-white/40">Privacy Policy</a>
