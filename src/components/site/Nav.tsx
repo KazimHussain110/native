@@ -12,17 +12,24 @@ const NAV = [
   { label: "Products", href: "/shop" },
   { label: "Benefits", href: "#process" },
   { label: "Our Story", href: "#sustainability" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#products");
   const { cart, wishlist } = useStoreSafe();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      setHidden(y > lastY && y > 80);
+      lastY = y;
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -48,8 +55,8 @@ export function Nav() {
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      animate={{ y: hidden ? "-120%" : 0, opacity: hidden ? 0 : 1 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled ? "px-3 pt-3" : "px-6 pt-6"
       }`}

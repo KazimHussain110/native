@@ -213,7 +213,13 @@
   100% { transform: translateX(-50%); }
 }
 
-@keyframes bg-drift {
-  0%, 100% { transform: translate3d(0,0,0) scale(1); }
-  50% { transform: translate3d(4%, -3%, 0) scale(1.08); }
+@keyframes gold-aberration {
+  0%   { background-position: 0% 50%, 2px 50%, -2px 50%; }
+  50%  { background-position: 100% 50%, calc(100% + 3px) 50%, calc(100% - 3px) 50%; }
+  100% { background-position: 0% 50%, 2px 50%, -2px 50%; }
+}
+
+@keyframes water-fill {
+  0%   { clip-path: inset(100% 0 0 0); }
+  100% { clip-path: inset(0% 0 0 0); }
 }

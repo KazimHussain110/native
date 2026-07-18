@@ -16,8 +16,8 @@ export const products = [
     desc: "Authentic Grade-A Himalayan Shilajit resin, harvested at 16,000ft. Rich in fulvic acid and 85+ trace minerals. Zero fillers, zero additives — just pure ancient resin as nature intended.",
   },
   {
-    slug: "ashwagandha-extract",
-    title: "Ashwagandha Extract",
+    slug: "ashwagandha",
+    title: "Ashwagandha",
     img: "/products/02.png",
     price: "$34.99",
     rating: 4.8,

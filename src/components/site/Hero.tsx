@@ -65,16 +65,27 @@ export function Hero() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      {LAYERS.map((l) => (
-        <ParallaxLayer
-          key={l.src}
-          src={l.src}
-          scrollSpeed={l.scrollSpeed}
-          hoverStrength={l.hoverStrength}
-          springX={springX}
-          springY={springY}
-        />
-      ))}
+      {/* Mobile / tablet static banner */}
+      <img
+        src="/mobile-hero-banner.png"
+        alt=""
+        aria-hidden
+        className="md:hidden absolute inset-0 h-full w-full object-cover object-center"
+      />
+
+      {/* Desktop parallax layers */}
+      <div className="hidden md:block">
+        {LAYERS.map((l) => (
+          <ParallaxLayer
+            key={l.src}
+            src={l.src}
+            scrollSpeed={l.scrollSpeed}
+            hoverStrength={l.hoverStrength}
+            springX={springX}
+            springY={springY}
+          />
+        ))}
+      </div>
     </section>
   );
 }

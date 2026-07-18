@@ -24,7 +24,9 @@ const quotes = [
 
 export function Testimonials() {
   return (
-    <section className="relative py-32 md:py-40">
+    <section className="relative py-32 md:py-40" style={{ backgroundImage: "url('/testimonials-bg.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div className="pointer-events-none absolute inset-0 bg-black/60" />
+      <div className="relative z-10">
       <SectionHeading
         eyebrow="Voices"
         title={<>Real people, <span className="text-serif-italic text-gold-gradient">real results</span>.</>}
@@ -54,6 +56,7 @@ export function Testimonials() {
             </footer>
           </motion.blockquote>
         ))}
+      </div>
       </div>
     </section>
   );

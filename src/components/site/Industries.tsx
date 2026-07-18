@@ -176,13 +176,6 @@ export function Industries() {
             <Card key={ind.name} industry={ind} index={i} expanded={expanded} />
           ))}
 
-          {/* <motion.p
-            animate={{ opacity: expanded ? 0 : 1, y: expanded ? 10 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
-          >
-            Hover to explore
-          </motion.p> */}
         </motion.div>
 
       </div>

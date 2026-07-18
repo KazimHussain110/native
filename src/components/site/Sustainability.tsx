@@ -62,11 +62,13 @@ export function Sustainability() {
               nothing to hide behind.
             </p>
 
-            <p className="text-base leading-relaxed text-muted-foreground">
-              This is not wellness as a trend. This is a return to what worked
-              for thousands of years — brought into your morning with the rigour
-              and transparency that modern life demands.
-            </p>
+            <a
+              href="/about"
+              className="mt-2 inline-flex items-center gap-2 self-start rounded-full border border-gold-gradient px-6 py-3 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-white/5"
+            >
+              Read More
+              <span aria-hidden>→</span>
+            </a>
           </motion.div>
 
         </div>

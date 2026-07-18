@@ -39,8 +39,8 @@ const steps = [
   },
 ];
 
-const PANEL_H = 100; // vh per step
-const TOTAL_SCROLL = steps.length * PANEL_H; // 500vh
+const PANEL_H = 100;
+const TOTAL_SCROLL = steps.length * PANEL_H;
 
 function StepPanel({
   step,
@@ -51,68 +51,69 @@ function StepPanel({
   index: number;
   progress: ReturnType<typeof useTransform>;
 }) {
-  // Each panel is active when progress is in [index/n, (index+1)/n]
   const n = steps.length;
   const enter = index / n;
   const active = (index + 0.5) / n;
   const exit = (index + 1) / n;
 
-  const opacity = useTransform(progress, [enter, active, exit], [0, 1, 0]);
-  const y = useTransform(progress, [enter, active, exit], [60, 0, -60]);
-  const scale = useTransform(progress, [enter, active, exit], [0.96, 1, 0.96]);
+  const opacity = useTransform(progress, [enter, active, exit], [index === 0 ? 1 : 0, 1, 0]);
+  const y = useTransform(progress, [enter, active, exit], [index === 0 ? 0 : 60, 0, -60]);
+  const scale = useTransform(progress, [enter, active, exit], [0.97, 1, 0.97]);
 
   return (
     <motion.div
-      className="absolute inset-0 flex items-center justify-center px-6 -pt-5 lg:pt-0"
+      className="absolute inset-0 flex items-center justify-center px-6 pt-40"
       style={{ opacity, y, scale }}
     >
-      <div className="mx-auto grid w-full max-w-6xl items-center gap-16 lg:grid-cols-[1fr_auto_1fr]">
-
-        {/* Left — number + title */}
-        <div className="text-right hidden lg:block">
-          <p className="text-[10px] uppercase tracking-[0.4em] text-gold/60">Step {step.n}</p>
-          <h3
-            className="mt-3 text-[clamp(4rem,9vw,8rem)] leading-none text-foreground/10"
+      <div className="mx-auto w-full max-w-xl">
+        {/* Card */}
+        <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-black/60 p-4 backdrop-blur-xl md:p-6">
+          {/* Giant ghost number */}
+          <span
+            className="pointer-events-none absolute -right-4 -top-6 select-none text-[10rem] leading-none text-white/5 md:text-[14rem]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {step.n}
-          </h3>
-        </div>
+          </span>
 
-        {/* Centre — main content */}
-        <div className="flex flex-col items-center text-center lg:max-w-md">
-          <p className="text-[10px] uppercase tracking-[0.4em] text-gold lg:hidden">Step {step.n}</p>
+          {/* Eyebrow */}
+          <p className="text-[10px] uppercase tracking-[0.45em] text-gold/70">
+            Step {step.n} — {step.sub}
+          </p>
+
+          {/* Title */}
           <h2
-            className="mt-2 text-[clamp(3rem,7vw,5.5rem)] leading-[0.95]"
+            className="mt-3 text-[clamp(3.5rem,8vw,6rem)] leading-[0.92]"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {step.title}
           </h2>
-          <p className="mt-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">{step.sub}</p>
 
-          <div className="mt-1 h-px w-12 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+          {/* Divider */}
+          <div className="mt-5 h-px w-16 bg-gradient-to-r from-gold/80 to-transparent" />
 
-          <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">{step.body}</p>
+          {/* Body */}
+          <p className="mt-3 max-w-lg text-xs leading-relaxed text-white/60">
+            {step.body}
+          </p>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-2">
+          {/* Tags */}
+          <div className="mt-4 flex flex-wrap gap-2">
             {step.detail.map((d) => (
               <span
                 key={d}
-                className="rounded-full border border-white/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
+                className="rounded-full border border-gold/20 bg-gold/5 px-4 py-1.5 text-[10px] uppercase tracking-[0.22em] text-gold/80"
               >
                 {d}
               </span>
             ))}
           </div>
-        </div>
 
-        {/* Right — index counter */}
-        <div className="hidden lg:flex items-center">
-          <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/40">
+          {/* Step counter bottom-right */}
+          <p className="mt-4 text-right text-[10px] uppercase tracking-[0.35em] text-white/20">
             {index + 1} / {steps.length}
-          </span>
+          </p>
         </div>
-
       </div>
     </motion.div>
   );
@@ -125,11 +126,7 @@ export function Process() {
     offset: ["start start", "end end"],
   });
   const smooth = useSpring(scrollYProgress, { stiffness: 60, damping: 20 });
-
-  // Gold spine fill
   const spineHeight = useTransform(smooth, [0, 1], ["0%", "100%"]);
-
-  // Active dot index
   const dotProgress = useTransform(smooth, [0, 1], [0, steps.length]);
 
   return (
@@ -139,12 +136,16 @@ export function Process() {
       className="relative"
       style={{ height: `${TOTAL_SCROLL}vh` }}
     >
-      {/* Sticky viewport */}
       <div className="sticky top-0 h-screen overflow-hidden">
 
-        {/* Ambient glow */}
+        {/* Background image + overlay */}
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="hero-glow-emerald absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20" />
+          <img
+            src="/bg-ccheck.png"
+            alt=""
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/70" />
         </div>
 
         {/* Section label — top */}
@@ -153,11 +154,11 @@ export function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="absolute left-1/2 top-20 -translate-x-1/2 text-center"
+          className="absolute left-1/2 top-8 -translate-x-1/2 text-center"
         >
           <p className="text-[10px] uppercase tracking-[0.45em] text-gold/70">The Process</p>
           <h2
-            className="mt-2 text-balance text-2xl leading-tight md:text-3xl"
+            className="mt-2 text-balance text-[clamp(2rem,6vw,5rem)] leading-tight"
             style={{ fontFamily: "var(--font-display)" }}
           >
             From mountain{" "}
@@ -166,17 +167,17 @@ export function Process() {
         </motion.div>
 
         {/* Vertical progress spine — right edge */}
-        <div className="absolute right-8 top-1/2 hidden -translate-y-1/2 flex-col items-center gap-0 md:flex"
-          style={{ height: 240 }}>
-          {/* Rail */}
-          <div className="relative h-full w-px bg-white/8 rounded-full overflow-hidden">
+        <div
+          className="absolute right-8 top-1/2 hidden -translate-y-1/2 flex-col items-center md:flex"
+          style={{ height: 240 }}
+        >
+          <div className="relative h-full w-px overflow-hidden rounded-full bg-white/10">
             <motion.div
-              className="absolute top-0 left-0 w-full rounded-full bg-gradient-to-b from-gold via-gold/70 to-transparent"
+              className="absolute left-0 top-0 w-full rounded-full bg-gradient-to-b from-gold via-gold/70 to-transparent"
               style={{ height: spineHeight }}
             />
           </div>
-          {/* Dots */}
-          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 flex flex-col justify-between py-0">
+          <div className="absolute inset-y-0 left-1/2 flex -translate-x-1/2 flex-col justify-between">
             {steps.map((s, i) => (
               <DotIndicator key={s.n} index={i} dotProgress={dotProgress} label={s.n} />
             ))}
@@ -189,15 +190,6 @@ export function Process() {
             <StepPanel key={step.n} step={step} index={i} progress={smooth} />
           ))}
         </div>
-
-        {/* Bottom scroll hint — fades out after first step */}
-        <motion.p
-          style={{ opacity: useTransform(smooth, [0, 0.15], [1, 0]) }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-[0.35em] text-muted-foreground/50"
-        >
-          Scroll to explore
-        </motion.p>
-
       </div>
     </section>
   );
@@ -212,7 +204,6 @@ function DotIndicator({
   dotProgress: ReturnType<typeof useTransform>;
   label: string;
 }) {
-  const isActive = useTransform(dotProgress, (v) => v >= index && v < index + 1);
   const scale = useTransform(dotProgress, [index - 0.3, index, index + 0.5, index + 1], [1, 1.6, 1.6, 1]);
   const glow = useTransform(dotProgress, [index - 0.3, index, index + 0.5, index + 1], [0, 1, 1, 0]);
 
@@ -220,16 +211,13 @@ function DotIndicator({
     <div className="relative flex items-center gap-3">
       <motion.div
         style={{ scale }}
-        className="h-1.5 w-1.5 rounded-full border border-gold/50 bg-background"
+        className="h-1.5 w-1.5 rounded-full border border-gold/50 bg-black"
       >
-        <motion.div
-          className="absolute inset-0 rounded-full bg-gold"
-          style={{ opacity: glow }}
-        />
+        <motion.div className="absolute inset-0 rounded-full bg-gold" style={{ opacity: glow }} />
       </motion.div>
       <motion.span
         style={{ opacity: glow }}
-        className="absolute left-4 text-[9px] uppercase tracking-[0.25em] text-gold/70 whitespace-nowrap"
+        className="absolute left-4 whitespace-nowrap text-[9px] uppercase tracking-[0.25em] text-gold/70"
       >
         {label}
       </motion.span>
