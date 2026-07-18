@@ -236,7 +236,7 @@ export function ProductShowcase() {
 
       <SectionHeading
         eyebrow="The Collection"
-        title={<>Four products, <span className="text-serif-italic text-gold-gradient">one ritual</span>.</>}
+        title={<>Featured products, <span className="text-serif-italic text-gold-gradient">one ritual</span>.</>}
         copy="Every formula is sourced from its origin, tested for purity, and crafted to work with your body — not against it."
       />
 
@@ -282,7 +282,7 @@ export function SectionHeading({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.1, ease: [0.2, 0.8, 0.2, 1] }}
-        className="mt-6 text-balance text-4xl leading-[1.05] md:text-6xl lg:text-7xl"
+        className="mt-6 text-[clamp(2rem,8vw,9rem)] leading-[1.05]"
       >
         {title}
       </motion.h2>
