@@ -48,23 +48,23 @@
 :root {
   --radius: 0.875rem;
 
-  --background: oklch(0.05 0.005 160);
-  --foreground: oklch(0.97 0.005 90);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.13 0.01 160);
 
-  --card: oklch(0.08 0.01 160);
-  --card-foreground: oklch(0.97 0.005 90);
+  --card: oklch(0.98 0.003 160);
+  --card-foreground: oklch(0.13 0.01 160);
 
-  --popover: oklch(0.08 0.01 160);
-  --popover-foreground: oklch(0.97 0.005 90);
+  --popover: oklch(0.98 0.003 160);
+  --popover-foreground: oklch(0.13 0.01 160);
 
   --primary: oklch(0.42 0.1 165);
   --primary-foreground: oklch(0.98 0.005 90);
 
-  --secondary: oklch(0.14 0.01 160);
-  --secondary-foreground: oklch(0.97 0.005 90);
+  --secondary: oklch(0.96 0.003 160);
+  --secondary-foreground: oklch(0.13 0.01 160);
 
-  --muted: oklch(0.14 0.01 160);
-  --muted-foreground: oklch(0.68 0.02 100);
+  --muted: oklch(0.96 0.003 160);
+  --muted-foreground: oklch(0.45 0.01 100);
 
   --accent: oklch(0.78 0.14 85);
   --accent-foreground: oklch(0.08 0.01 160);
@@ -72,8 +72,8 @@
   --destructive: oklch(0.62 0.22 25);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(1 0 0 / 0.08);
-  --input: oklch(1 0 0 / 0.1);
+  --border: oklch(0 0 0 / 0.08);
+  --input: oklch(0 0 0 / 0.1);
   --ring: oklch(0.78 0.14 85 / 0.5);
 
   /* Brand tokens */
@@ -116,12 +116,12 @@
 }
 
 @utility glass {
-  background: color-mix(in oklab, oklch(1 0 0) 4%, transparent);
-  border: 1px solid color-mix(in oklab, oklch(1 0 0) 8%, transparent);
+  background: color-mix(in oklab, oklch(0 0 0) 3%, transparent);
+  border: 1px solid color-mix(in oklab, oklch(0 0 0) 6%, transparent);
 }
 
 @utility glass-strong {
-  background: color-mix(in oklab, oklch(1 0 0) 6%, transparent);
+  background: color-mix(in oklab, oklch(0 0 0) 4%, transparent);
   border: 1px solid color-mix(in oklab, var(--gold) 14%, transparent);
 }
 

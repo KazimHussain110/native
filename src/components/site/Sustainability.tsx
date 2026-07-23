@@ -35,7 +35,7 @@ export function Sustainability() {
               className="text-4xl leading-[1.05] md:text-5xl lg:text-6xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Rooted in the{" "}
+              <span style={{ color: "#4a7c52" }}>Rooted in the{" "}</span>
               <span className="text-serif-italic text-gold-gradient">ancient world</span>.
             </h2>
 
@@ -64,7 +64,7 @@ export function Sustainability() {
 
             <a
               href="/about"
-              className="mt-2 inline-flex items-center gap-2 self-start rounded-full border border-gold-gradient px-6 py-3 text-sm uppercase tracking-widest text-foreground transition-colors hover:bg-white/5"
+              className="mt-2 inline-flex items-center gap-2 self-start rounded-full bg-gradient-to-r from-[oklch(0.88_0.1_90)] via-[oklch(0.78_0.14_85)] to-[oklch(0.62_0.13_78)] px-6 py-3 text-sm uppercase tracking-widest text-ink transition-opacity hover:opacity-90"
             >
               Read More
               <span aria-hidden>→</span>

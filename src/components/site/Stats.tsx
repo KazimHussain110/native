@@ -37,6 +37,9 @@ function Counter({ to, suffix }: { to: number; suffix: string }) {
 export function Stats() {
   return (
     <section className="relative py-24">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <img src="/stats-bg.png" alt="" className="h-full w-full object-cover" />
+      </div>
       <div className="mx-auto max-w-6xl px-6">
         <div className="glass-strong grid grid-cols-2 gap-px overflow-hidden rounded-3xl md:grid-cols-4">
           {stats.map((s, i) => (

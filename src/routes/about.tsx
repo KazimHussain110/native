@@ -44,9 +44,9 @@ function AboutPage() {
             className="mt-4 text-[clamp(2.5rem,7vw,6.5rem)] leading-[0.95] tracking-tight"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Formed by <span className="text-serif-italic text-gold-gradient">nature</span>,
+            <span style={{ color: "#4a7c52" }}>Formed by </span><span className="text-serif-italic text-gold-gradient">nature</span><span style={{ color: "#4a7c52" }}>,</span>
             <br />
-            Perfected by <span className="text-serif-italic text-gold-gradient">ritual</span>.
+            <span style={{ color: "#4a7c52" }}>Perfected by </span><span className="text-serif-italic text-gold-gradient">ritual</span><span style={{ color: "#4a7c52" }}>.</span>
           </h1>
           <p className="mx-auto mt-8 max-w-xl text-sm leading-relaxed text-muted-foreground">
             We build Bridges between ancient Ayurvedic wisdom and modern clinical validation. No
@@ -66,7 +66,7 @@ function AboutPage() {
             <span className="text-[10px] uppercase tracking-[0.3em] text-gold">The Genesis</span>
             <h2
               className="text-3xl md:text-4xl leading-tight"
-              style={{ fontFamily: "var(--font-display)" }}
+              style={{ fontFamily: "var(--font-display)", color: "#4a7c52" }}
             >
               Born from a pursuit of absolute purity.
             </h2>
@@ -88,7 +88,7 @@ function AboutPage() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative rounded-3xl overflow-hidden glass p-8 border border-white/5 flex flex-col justify-center items-center h-[350px] bg-gradient-to-br from-white/[0.02] to-transparent"
+            className="relative rounded-3xl overflow-hidden glass p-8 border border-black/6 flex flex-col justify-center items-center h-[350px] bg-gradient-to-br from-black/[0.02] to-transparent"
           >
             <div className="absolute inset-0 bg-radial-gradient from-gold/5 to-transparent pointer-events-none" />
             <img
@@ -106,7 +106,7 @@ function AboutPage() {
         <div className="mb-32">
           <div className="text-center mb-16">
             <span className="text-[10px] uppercase tracking-[0.4em] text-gold">Our Standards</span>
-            <h2 className="mt-3 text-3xl md:text-4xl" style={{ fontFamily: "var(--font-display)" }}>
+            <h2 className="mt-3 text-3xl md:text-4xl" style={{ fontFamily: "var(--font-display)", color: "#4a7c52" }}>
               The Pillars of Native Rituals
             </h2>
           </div>
@@ -150,14 +150,14 @@ function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="glass rounded-2xl p-6 border border-white/5 hover:border-gold/30 transition-all duration-300 flex flex-col justify-between"
+                className="glass rounded-2xl p-6 border border-black/5 hover:border-gold/30 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="h-10 w-10 rounded-full bg-gold/5 border border-gold/15 flex items-center justify-center mb-5 text-gold">
                     <pillar.icon className="h-5 w-5" />
                   </div>
                   <h3
-                    className="text-lg font-medium text-white mb-2"
+                    className="text-lg font-medium text-foreground mb-2"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {pillar.title}
@@ -174,12 +174,12 @@ function AboutPage() {
           <div className="mx-auto max-w-3xl">
             <h2
               className="text-3xl md:text-4xl text-center mb-16"
-              style={{ fontFamily: "var(--font-display)" }}
+              style={{ fontFamily: "var(--font-display)", color: "#4a7c52" }}
             >
               The Sourcing Journey
             </h2>
 
-            <div className="space-y-12 relative before:absolute before:inset-y-0 before:left-4 before:w-[1px] before:bg-white/10">
+            <div className="space-y-12 relative before:absolute before:inset-y-0 before:left-4 before:w-[1px] before:bg-black/8">
               {[
                 {
                   step: "01",
@@ -217,7 +217,7 @@ function AboutPage() {
                     {item.step}
                   </span>
                   <h3
-                    className="text-xl font-medium text-white"
+                    className="text-xl font-medium text-foreground"
                     style={{ fontFamily: "var(--font-display)" }}
                   >
                     {item.title}
@@ -244,7 +244,7 @@ function AboutPage() {
             className="text-3xl md:text-5xl leading-tight mb-6"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Elevate your daily <span className="text-serif-italic text-gold-gradient">vessel</span>.
+            <span style={{ color: "#4a7c52" }}>Elevate your daily </span><span className="text-serif-italic text-gold-gradient">vessel</span><span style={{ color: "#4a7c52" }}>.</span>
           </h2>
           <p className="mx-auto max-w-md text-sm text-muted-foreground mb-8">
             Experience the difference of ancient elemental extracts purified with clean scientific
@@ -259,7 +259,7 @@ function AboutPage() {
             </Link>
             <Link
               to="/contact"
-              className="rounded-full border border-white/10 bg-white/5 hover:bg-white/10 px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all inline-block"
+              className="rounded-full border border-black/8 bg-black/[0.02] hover:bg-black/[0.04] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-foreground transition-all inline-block"
             >
               Get In Touch
             </Link>

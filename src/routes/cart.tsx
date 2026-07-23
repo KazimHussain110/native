@@ -36,7 +36,7 @@ function CartPage() {
           className="mb-12 text-[clamp(2.2rem,5vw,4rem)] leading-[0.95]"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          Your <span className="text-serif-italic text-gold-gradient">Cart</span>.
+          <span style={{ color: "#4a7c52" }}>Your </span><span className="text-serif-italic text-gold-gradient">Cart</span><span style={{ color: "#4a7c52" }}>.</span>
         </motion.h1>
 
         <AnimatePresence mode="popLayout">
@@ -52,7 +52,7 @@ function CartPage() {
               <p className="text-lg text-muted-foreground">Your cart is empty.</p>
               <button
                 onClick={() => navigate({ to: "/shop" })}
-                className="rounded-full border border-white/10 px-6 py-2.5 text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold/40 hover:text-gold"
+                className="rounded-full border border-black/8 px-6 py-2.5 text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold/40 hover:text-gold"
               >
                 Browse Products
               </button>
@@ -69,8 +69,8 @@ function CartPage() {
                   transition={{ duration: 0.4, delay: i * 0.05 }}
                   className="flex items-center gap-5 rounded-2xl p-4 md:p-5"
                   style={{
-                    background: "color-mix(in oklab, oklch(1 0 0) 4%, transparent)",
-                    border: "1px solid color-mix(in oklab, oklch(1 0 0) 8%, transparent)",
+                    background: "color-mix(in oklab, oklch(0 0 0) 2%, transparent)",
+                    border: "1px solid color-mix(in oklab, oklch(0 0 0) 6%, transparent)",
                   }}
                 >
                   <img
@@ -91,7 +91,7 @@ function CartPage() {
                   </div>
                   <button
                     onClick={() => removeFromCart(p.slug)}
-                    className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-white/10 text-muted-foreground transition-colors hover:border-red-500/40 hover:text-red-400"
+                    className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-black/8 text-muted-foreground transition-colors hover:border-red-500/40 hover:text-red-400"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>
@@ -102,10 +102,10 @@ function CartPage() {
               <motion.div
                 layout
                 className="mt-6 rounded-2xl p-6"
-                style={{
-                  background: "color-mix(in oklab, oklch(1 0 0) 4%, transparent)",
-                  border: "1px solid color-mix(in oklab, var(--gold) 14%, transparent)",
-                }}
+                  style={{
+                    background: "color-mix(in oklab, oklch(0 0 0) 2%, transparent)",
+                    border: "1px solid color-mix(in oklab, var(--gold) 14%, transparent)",
+                  }}
               >
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-muted-foreground">
@@ -118,7 +118,7 @@ function CartPage() {
                 </button>
                 <button
                   onClick={() => navigate({ to: "/shop" })}
-                  className="mt-3 w-full rounded-full border border-white/10 py-3.5 text-[10px] uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:border-white/20 hover:text-foreground"
+                  className="mt-3 w-full rounded-full border border-black/8 py-3.5 text-[10px] uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:border-black/15 hover:text-foreground"
                 >
                   Continue Shopping
                 </button>

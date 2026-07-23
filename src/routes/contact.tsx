@@ -43,7 +43,7 @@ function Field({ label, placeholder, type = "text" }: { label: string; placehold
       <input
         type={type}
         placeholder={placeholder}
-        className="w-full rounded-full border border-white/10 bg-white/[0.03] px-5 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
+        className="w-full rounded-full border border-black/8 bg-black/[0.02] px-5 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
       />
     </div>
   );
@@ -57,7 +57,7 @@ function FaqItem({ q, a, i }: { q: string; a: string; i: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: i * 0.08 }}
-      className="border-b border-white/8"
+      className="border-b border-black/8"
     >
       <button
         onClick={() => setOpen((v) => !v)}
@@ -103,8 +103,8 @@ function ContactPage() {
             className="mt-4 text-[clamp(3rem,8vw,7rem)] leading-[0.95]"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            We'd love to{" "}
-            <span className="text-serif-italic text-gold-gradient">hear from you</span>.
+            <span style={{ color: "#4a7c52" }}>We'd love to{" "}</span>
+            <span className="text-serif-italic text-gold-gradient">hear from you</span><span style={{ color: "#4a7c52" }}>.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-sm text-muted-foreground">
             Questions about products, sourcing, or your order? We read every message and reply within 24 hours.
@@ -135,7 +135,7 @@ function ContactPage() {
                 <textarea
                   rows={5}
                   placeholder="I'd like to know more about Shilajit resin and which strength to start with…"
-                  className="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
+                  className="w-full resize-none rounded-2xl border border-black/8 bg-black/[0.02] p-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
                 />
               </div>
             </form>
@@ -147,7 +147,7 @@ function ContactPage() {
           </motion.div>
 
           {/* Separator */}
-          <div className="h-px w-full bg-white/10 lg:h-auto lg:w-px lg:self-stretch" />
+          <div className="h-px w-full bg-black/8 lg:h-auto lg:w-px lg:self-stretch" />
 
           {/* Right — info card */}
           <motion.div
@@ -197,7 +197,7 @@ function ContactPage() {
               className="mt-3 text-[clamp(2rem,5vw,4rem)] leading-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Common <span className="text-serif-italic text-gold-gradient">questions</span>.
+              <span style={{ color: "#4a7c52" }}>Common </span><span className="text-serif-italic text-gold-gradient">questions</span><span style={{ color: "#4a7c52" }}>.</span>
             </h2>
           </div>
           <div>

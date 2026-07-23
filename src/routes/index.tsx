@@ -11,6 +11,7 @@ import { Stats } from "@/components/site/Stats";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Contact, Footer } from "@/components/site/Contact";
 import { CursorGlow } from "@/components/site/CursorGlow";
+import { useState, useRef, useEffect } from "react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -33,21 +34,46 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [footerHeight, setFooterHeight] = useState(0);
+  const footerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const el = footerRef.current;
+    if (!el) return;
+
+    const update = () => setFooterHeight(el.offsetHeight);
+    update();
+
+    const ro = new ResizeObserver(update);
+    ro.observe(el);
+    window.addEventListener("resize", update);
+
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   return (
     <main className="relative bg-background">
       <CursorGlow />
-      <Nav />
-      <Hero />
-      <ClientMarquee />
-      <ProductShowcase />
-      <Sustainability />
-      <Process />
-      <ProcessCircuit />
-      <Industries />
-      <Stats />
-      <Testimonials />
-      <Contact />
-      <Footer />
+      <div
+        className="relative z-10 bg-background"
+        style={{ marginBottom: footerHeight }}
+      >
+        <Nav />
+        <Hero />
+        <ClientMarquee />
+        <ProductShowcase />
+        <Sustainability />
+        <Process />
+        <ProcessCircuit />
+        <Industries />
+        <Testimonials />
+        <Stats />
+        <Contact />
+      </div>
+      <Footer footerRef={footerRef} />
     </main>
   );
 }

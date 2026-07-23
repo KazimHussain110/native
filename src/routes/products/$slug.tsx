@@ -141,7 +141,7 @@ function ProductPage() {
 
             <div className="flex flex-wrap gap-2">
               {product.details.map((d) => (
-                <span key={d} className="rounded-full border border-white/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                <span key={d} className="rounded-full border border-black/8 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                   {d}
                 </span>
               ))}
@@ -151,7 +151,7 @@ function ProductPage() {
               <button className="flex-1 rounded-full bg-gradient-to-r from-[oklch(0.88_0.1_90)] via-[oklch(0.78_0.14_85)] to-[oklch(0.62_0.13_78)] py-4 text-sm font-semibold uppercase tracking-[0.15em] text-ink transition-opacity hover:opacity-90">
                 Add to Cart
               </button>
-              <button className="flex-1 rounded-full border border-white/15 py-4 text-sm uppercase tracking-[0.15em] text-foreground transition-colors hover:border-gold/50 hover:text-gold">
+              <button className="flex-1 rounded-full border border-black/10 py-4 text-sm uppercase tracking-[0.15em] text-foreground transition-colors hover:border-gold/50 hover:text-gold">
                 Learn More
               </button>
             </div>

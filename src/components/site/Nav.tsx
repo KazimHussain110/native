@@ -64,13 +64,13 @@ export function Nav() {
       <div
         className={`mx-auto flex items-center justify-between gap-4 transition-all duration-500 ${
           scrolled
-            ? "glass-strong max-w-3xl rounded-full px-5 py-3"
-            : "max-w-4xl rounded-full border border-white/10 bg-white/5 px-6 py-4 backdrop-blur-md"
+            ? "max-w-4xl rounded-full px-5 py-3 bg-black/[0.04] border border-black/8 backdrop-blur-md"
+            : "max-w-5xl rounded-full border border-black/8 bg-black/[0.02] px-6 py-4 backdrop-blur-md"
         }`}
       >
         {/* Logo */}
         <a href="/" className="flex items-center">
-          <img src="/logo.png" alt="Native Rituals" className="h-8 w-auto" />
+          <img src="/logo.png" alt="Native Rituals" className="h-12 w-auto" />
         </a>
 
         {/* Desktop nav */}
@@ -98,7 +98,7 @@ export function Nav() {
           {/* Wishlist */}
           <Link
             to="/wishlist"
-            className="relative hidden h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-white/10 hover:text-gold md:grid"
+            className="relative hidden h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-black/5 hover:text-gold md:grid"
           >
             <Heart className="h-4 w-4" />
             {wishlist.length > 0 && (
@@ -111,7 +111,7 @@ export function Nav() {
           {/* Cart */}
           <Link
             to="/cart"
-            className="relative hidden h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-white/10 hover:text-gold md:grid"
+            className="relative hidden h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-black/5 hover:text-gold md:grid"
           >
             <ShoppingCart className="h-4 w-4" />
             {cart.length > 0 && (
@@ -155,16 +155,16 @@ export function Nav() {
                   key={n.href}
                   href={n.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-2xl px-4 py-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:bg-white/10 hover:text-gold"
+                  className="rounded-2xl px-4 py-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:bg-black/5 hover:text-gold"
                 >
                   {n.label}
                 </a>
               ))}
-              <div className="mt-2 flex gap-2 border-t border-white/5 pt-3">
-                <Link to="/wishlist" onClick={() => setOpen(false)} className="flex flex-1 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs text-muted-foreground hover:bg-white/10 hover:text-gold">
+              <div className="mt-2 flex gap-2 border-t border-black/5 pt-3">
+                <Link to="/wishlist" onClick={() => setOpen(false)} className="flex flex-1 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs text-muted-foreground hover:bg-black/5 hover:text-gold">
                   <Heart className="h-4 w-4" /> Wishlist {wishlist.length > 0 && `(${wishlist.length})`}
                 </Link>
-                <Link to="/cart" onClick={() => setOpen(false)} className="flex flex-1 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs text-muted-foreground hover:bg-white/10 hover:text-gold">
+                <Link to="/cart" onClick={() => setOpen(false)} className="flex flex-1 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs text-muted-foreground hover:bg-black/5 hover:text-gold">
                   <ShoppingCart className="h-4 w-4" /> Cart {cart.length > 0 && `(${cart.length})`}
                 </Link>
               </div>
