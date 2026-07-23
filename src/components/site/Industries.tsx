@@ -82,8 +82,8 @@ function Card({
           className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-2xl p-5"
           style={{
             backfaceVisibility: "hidden",
-            background: "oklch(0.1 0.008 160)",
-            border: "1px solid color-mix(in oklab, oklch(1 0 0) 8%, transparent)",
+            background: "oklch(0.97 0.003 160)",
+            border: "1px solid color-mix(in oklab, oklch(0 0 0) 6%, transparent)",
           }}
         >
           <div className="flex items-start justify-between">
@@ -129,7 +129,7 @@ export function Industries() {
     <section id="industries" className="relative py-32 md:py-40">
       <SectionHeading
         eyebrow="Benefits"
-        title={<>What nature <span className="text-serif-italic text-gold-gradient">already knew</span>.</>}
+        title={<><span style={{ color: "#4a7c52" }}>What nature </span><span className="text-serif-italic text-gold-gradient">already knew</span>.</>}
       />
 
       <div className="mx-auto mt-20 max-w-6xl px-6">
@@ -146,8 +146,8 @@ export function Industries() {
               className="flex flex-col justify-between rounded-2xl p-5"
               style={{
                 minHeight: 160,
-                background: "color-mix(in oklab, oklch(1 0 0) 4%, transparent)",
-                border: "1px solid color-mix(in oklab, oklch(1 0 0) 8%, transparent)",
+                background: "color-mix(in oklab, oklch(0 0 0) 3%, transparent)",
+                border: "1px solid color-mix(in oklab, oklch(0 0 0) 6%, transparent)",
               }}
             >
               <div className="flex items-start justify-between">

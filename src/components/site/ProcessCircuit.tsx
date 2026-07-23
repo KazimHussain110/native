@@ -65,7 +65,7 @@ function Arrow({ a, offset }: { a: typeof ARROWS[number]; offset: MotionValue<nu
   return (
     <>
       {/* Dim track */}
-      <path d={d} stroke="oklch(1 0 0 / 0.08)" strokeWidth="1.2" fill="none" markerEnd="url(#arr-dim)" />
+      <path d={d} stroke="oklch(0 0 0 / 0.08)" strokeWidth="1.2" fill="none" markerEnd="url(#arr-dim)" />
       {/* Gold animated */}
       <motion.path
         d={d}
@@ -156,8 +156,7 @@ export function ProcessCircuit() {
     <section ref={sectionRef} className="relative py-32 md:py-40">
       <SectionHeading
         eyebrow="How It Flows"
-        title={<>What it does <span className="text-serif-italic text-gold-gradient">for you</span>.</>}
-        copy="Three core benefits. One daily ritual."
+        title={<><span style={{ color: "#4a7c52" }}>What it does </span><span className="text-serif-italic text-gold-gradient">for you</span>.</>}
       />
 
       <div className="relative mx-auto mt-20 max-w-3xl px-6">
@@ -174,7 +173,7 @@ export function ProcessCircuit() {
                 <path d="M0,0 L0,6 L7,3 Z" fill="oklch(0.78 0.14 85)" />
               </marker>
               <marker id="arr-dim" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
-                <path d="M0,0 L0,6 L7,3 Z" fill="oklch(1 0 0 / 0.1)" />
+                <path d="M0,0 L0,6 L7,3 Z" fill="oklch(0 0 0 / 0.1)" />
               </marker>
             </defs>
 

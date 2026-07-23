@@ -32,7 +32,7 @@ export function CursorGlow() {
       style={{
         background:
           "radial-gradient(circle at center, color-mix(in oklab, var(--gold) 14%, transparent) 0%, transparent 60%)",
-        mixBlendMode: "screen",
+        mixBlendMode: "multiply",
       }}
     />
   );

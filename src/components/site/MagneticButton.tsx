@@ -26,7 +26,7 @@ export function MagneticButton({ children, variant = "gold", className = "", ...
   const styles =
     variant === "gold"
       ? "text-ink bg-gradient-to-br from-[oklch(0.88_0.1_90)] via-[oklch(0.78_0.14_85)] to-[oklch(0.62_0.13_78)]"
-      : "text-foreground border border-white/15 hover:border-gold/60 hover:text-gold";
+      : "text-foreground border border-black/10 hover:border-gold/60 hover:text-gold";
 
   return (
     <button

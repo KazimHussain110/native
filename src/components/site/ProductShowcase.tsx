@@ -60,10 +60,10 @@ function ProductCard({
       animate={{ opacity: dimmed ? 0.35 : 1, scale: dimmed ? 0.97 : 1 }}
       transition={SPRING}
       style={{ borderRadius: 24 }}
-      className="group glass relative flex flex-col overflow-hidden p-5 md:cursor-pointer md:p-8"
+      className="group relative flex flex-col overflow-hidden md:cursor-pointer"
     >
-      {/* Image */}
-      <div className="relative flex h-48 w-full items-center justify-center md:h-64">
+      {/* Image — white bg */}
+      <div className="relative flex h-48 w-full items-center justify-center rounded-t-3xl bg-white p-5 md:h-64 md:p-8">
         <motion.img
           layoutId={`img-${p.slug}`}
           src={p.img}
@@ -74,33 +74,35 @@ function ProductCard({
         />
       </div>
 
-      {/* Info */}
-      <div className="mt-4 flex items-end justify-between md:mt-6">
-        <div>
-          <h3 className="text-base md:text-xl">{p.title}</h3>
-          <div className="mt-1.5 flex items-center gap-2">
-            <Stars rating={p.rating} uid={p.slug} />
-            <span className="text-[11px] text-muted-foreground">({p.reviews})</span>
+      {/* Info — glass bg */}
+      <div className="glass rounded-b-3xl p-5 md:p-8">
+        <div className="flex items-end justify-between">
+          <div>
+            <h3 className="text-base md:text-xl">{p.title}</h3>
+            <div className="mt-1.5 flex items-center gap-2">
+              <Stars rating={p.rating} uid={p.slug} />
+              <span className="text-[11px] text-muted-foreground">({p.reviews})</span>
+            </div>
+            <p className="mt-1.5 text-base font-semibold text-gold md:text-lg">{p.price}</p>
           </div>
-          <p className="mt-1.5 text-base font-semibold text-gold md:text-lg">{p.price}</p>
-        </div>
 
-        {/* Arrow circle — desktop only */}
-        <div className="relative hidden h-11 w-11 shrink-0 place-items-center md:grid">
-          <svg className="absolute inset-0 -rotate-90" width="44" height="44" viewBox="0 0 44 44">
-            <circle cx="22" cy="22" r="20" fill="none" stroke="oklch(1 0 0 / 0.1)" strokeWidth="1.5" />
-            <circle
-              cx="22" cy="22" r="20"
-              fill="none"
-              stroke="oklch(0.78 0.14 85)"
-              strokeWidth="1.5"
-              strokeDasharray={CIRCUMFERENCE}
-              strokeDashoffset={hovered ? 0 : CIRCUMFERENCE}
-              strokeLinecap="round"
-              style={{ transition: "stroke-dashoffset 0.6s cubic-bezier(0.4,0,0.2,1)" }}
-            />
-          </svg>
-          <span className="relative text-gold transition-transform duration-500 group-hover:rotate-45">→</span>
+          {/* Arrow circle — desktop only */}
+          <div className="relative hidden h-11 w-11 shrink-0 place-items-center md:grid">
+            <svg className="absolute inset-0 -rotate-90" width="44" height="44" viewBox="0 0 44 44">
+              <circle cx="22" cy="22" r="20" fill="none" stroke="oklch(1 0 0 / 0.1)" strokeWidth="1.5" />
+              <circle
+                cx="22" cy="22" r="20"
+                fill="none"
+                stroke="oklch(0.78 0.14 85)"
+                strokeWidth="1.5"
+                strokeDasharray={CIRCUMFERENCE}
+                strokeDashoffset={hovered ? 0 : CIRCUMFERENCE}
+                strokeLinecap="round"
+                style={{ transition: "stroke-dashoffset 0.6s cubic-bezier(0.4,0,0.2,1)" }}
+              />
+            </svg>
+            <span className="relative text-gold transition-transform duration-500 group-hover:rotate-45">→</span>
+          </div>
         </div>
       </div>
     </motion.article>
@@ -127,7 +129,7 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
         className="glass pointer-events-auto fixed inset-0 z-50 m-auto flex h-fit w-full max-w-4xl overflow-hidden"
       >
         {/* Left — image + details */}
-        <div className="flex flex-1 flex-col justify-between border-r border-white/8 p-10">
+        <div className="flex flex-1 flex-col justify-between border-r border-black/8 p-10">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -158,7 +160,7 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
             transition={{ duration: 0.25, delay: 0.3 }}
           >
             {p.details.map((d) => (
-              <span key={d} className="rounded-full border border-white/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <span key={d} className="rounded-full border border-black/8 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                 {d}
               </span>
             ))}
@@ -188,7 +190,7 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
               {[5, 4, 3].map((star) => (
                 <div key={star} className="flex items-center gap-2">
                   <span className="w-3 text-[10px] text-muted-foreground">{star}</span>
-                  <div className="h-1 flex-1 overflow-hidden rounded-full bg-white/8">
+                  <div className="h-1 flex-1 overflow-hidden rounded-full bg-black/8">
                     <motion.div
                       className="h-full rounded-full bg-gold/60"
                       initial={{ width: 0 }}
@@ -205,7 +207,7 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
             <button className="w-full rounded-full bg-gradient-to-r from-[oklch(0.88_0.1_90)] via-[oklch(0.78_0.14_85)] to-[oklch(0.62_0.13_78)] py-3.5 text-sm font-semibold uppercase tracking-[0.15em] text-ink transition-opacity hover:opacity-90">
               Add to Cart
             </button>
-            <button className="w-full rounded-full border border-white/15 py-3.5 text-sm uppercase tracking-[0.15em] text-foreground transition-colors hover:border-gold/50 hover:text-gold">
+            <button className="w-full rounded-full border border-black/10 py-3.5 text-sm uppercase tracking-[0.15em] text-foreground transition-colors hover:border-gold/50 hover:text-gold">
               Learn More
             </button>
           </div>
@@ -213,7 +215,7 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
 
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full border border-white/10 text-muted-foreground transition-colors hover:border-gold/40 hover:text-gold"
+          className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full border border-black/8 text-muted-foreground transition-colors hover:border-gold/40 hover:text-gold"
         >
           ✕
         </button>
@@ -236,8 +238,7 @@ export function ProductShowcase() {
 
       <SectionHeading
         eyebrow="The Collection"
-        title={<>Featured products, <span className="text-serif-italic text-gold-gradient">one ritual</span>.</>}
-        copy="Every formula is sourced from its origin, tested for purity, and crafted to work with your body — not against it."
+        title={<><span style={{ color: "#4a7c52" }}>Featured products</span>.</>}
       />
 
       <LayoutGroup>

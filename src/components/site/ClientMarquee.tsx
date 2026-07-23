@@ -6,7 +6,7 @@ const clients = [
 export function ClientMarquee() {
   const row = [...clients, ...clients];
   return (
-    <section className="relative border-y border-white/5 py-10">
+    <section className="relative border-y border-black/5 py-10">
       <p className="mb-6 text-center text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
         Rooted in Ayurveda · Trusted by 10,000+ customers
       </p>

@@ -90,12 +90,12 @@ function ProductCard({ p, i, onCart, onWishlist, wishlisted, inCart }: {
       onClick={() => navigate({ to: "/products/$slug", params: { slug: p.slug } })}
       className="group relative flex cursor-pointer flex-col overflow-hidden rounded-3xl"
       style={{
-        background: "color-mix(in oklab, oklch(1 0 0) 4%, transparent)",
-        border: "1px solid color-mix(in oklab, oklch(1 0 0) 8%, transparent)",
+        background: "color-mix(in oklab, oklch(0 0 0) 2%, transparent)",
+        border: "1px solid color-mix(in oklab, oklch(0 0 0) 6%, transparent)",
       }}
     >
       {/* Image area */}
-      <div className="relative flex h-56 items-center justify-center overflow-hidden bg-white/[0.02] md:h-72">
+      <div className="relative flex h-56 items-center justify-center overflow-hidden bg-black/[0.02] md:h-72">
         <motion.img
           src={p.img}
           alt={p.title}
@@ -108,7 +108,7 @@ function ProductCard({ p, i, onCart, onWishlist, wishlisted, inCart }: {
         {/* Wishlist button — top right */}
         <button
           onClick={handleWishlist}
-          className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full border border-white/10 bg-background/60 transition-colors hover:border-gold/40"
+          className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-full border border-black/8 bg-background/60 transition-colors hover:border-gold/40"
         >
           <Heart
             className="h-3.5 w-3.5 transition-colors"
@@ -206,7 +206,7 @@ function ShopPage() {
             className="text-[clamp(2.8rem,6vw,5rem)] leading-[0.95]"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Shop <span className="text-serif-italic text-gold-gradient">Native Rituals</span>.
+            <span style={{ color: "#4a7c52" }}>Shop </span><span className="text-serif-italic text-gold-gradient">Native Rituals</span><span style={{ color: "#4a7c52" }}>.</span>
           </h1>
         </motion.div>
 
@@ -226,7 +226,7 @@ function ShopPage() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search products…"
-              className="w-full rounded-full border border-white/10 bg-white/[0.03] py-3 pl-10 pr-10 text-sm outline-none transition-colors placeholder:text-muted-foreground/40 focus:border-gold/50 focus:bg-white/[0.05]"
+              className="w-full rounded-full border border-black/8 bg-black/[0.02] py-3 pl-10 pr-10 text-sm outline-none transition-colors placeholder:text-muted-foreground/40 focus:border-gold/50 focus:bg-black/[0.04]"
             />
             <AnimatePresence>
               {query && (
@@ -253,7 +253,7 @@ function ShopPage() {
                 className={`rounded-full border px-5 py-2 text-[10px] uppercase tracking-[0.25em] transition-all duration-300 ${
                   activeFilter === f
                     ? "border-gold/60 bg-gold/10 text-gold"
-                    : "border-white/10 text-muted-foreground hover:border-white/20 hover:text-foreground"
+                    : "border-black/8 text-muted-foreground hover:border-black/15 hover:text-foreground"
                 }`}
               >
                 {f}
@@ -285,7 +285,7 @@ function ShopPage() {
               <p className="mt-3 text-sm text-muted-foreground">Try a different search or filter.</p>
               <button
                 onClick={() => { setQuery(""); setActiveFilter("All"); }}
-                className="mt-6 rounded-full border border-white/10 px-6 py-2.5 text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold/40 hover:text-gold"
+                className="mt-6 rounded-full border border-black/8 px-6 py-2.5 text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold/40 hover:text-gold"
               >
                 Clear filters
               </button>
@@ -298,7 +298,7 @@ function ShopPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mt-20 flex flex-wrap justify-center gap-8 border-t border-white/5 pt-12"
+          className="mt-20 flex flex-wrap justify-center gap-8 border-t border-black/5 pt-12"
         >
           {["Free shipping over $60", "30-day guarantee", "Lab verified · COA included", "Ethically sourced"].map((t) => (
             <p key={t} className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50">{t}</p>

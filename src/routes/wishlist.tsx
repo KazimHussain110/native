@@ -32,7 +32,7 @@ function WishlistPage() {
           className="mb-12 text-[clamp(2.2rem,5vw,4rem)] leading-[0.95]"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          Your <span className="text-serif-italic text-gold-gradient">Wishlist</span>.
+          <span style={{ color: "#4a7c52" }}>Your </span><span className="text-serif-italic text-gold-gradient">Wishlist</span><span style={{ color: "#4a7c52" }}>.</span>
         </motion.h1>
 
         <AnimatePresence mode="popLayout">
@@ -48,7 +48,7 @@ function WishlistPage() {
               <p className="text-lg text-muted-foreground">Your wishlist is empty.</p>
               <button
                 onClick={() => navigate({ to: "/shop" })}
-                className="rounded-full border border-white/10 px-6 py-2.5 text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold/40 hover:text-gold"
+                className="rounded-full border border-black/8 px-6 py-2.5 text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold/40 hover:text-gold"
               >
                 Browse Products
               </button>
@@ -68,21 +68,21 @@ function WishlistPage() {
                   transition={{ duration: 0.4, delay: i * 0.05 }}
                   className="relative flex flex-col overflow-hidden rounded-2xl"
                   style={{
-                    background: "color-mix(in oklab, oklch(1 0 0) 4%, transparent)",
-                    border: "1px solid color-mix(in oklab, oklch(1 0 0) 8%, transparent)",
+                    background: "color-mix(in oklab, oklch(0 0 0) 2%, transparent)",
+                    border: "1px solid color-mix(in oklab, oklch(0 0 0) 6%, transparent)",
                   }}
                 >
                   {/* Remove from wishlist */}
                   <button
                     onClick={() => toggleWishlist(p.slug)}
-                    className="absolute right-4 top-4 z-10 grid h-8 w-8 place-items-center rounded-full border border-white/10 bg-background/60 transition-colors hover:border-gold/40"
+                    className="absolute right-4 top-4 z-10 grid h-8 w-8 place-items-center rounded-full border border-black/8 bg-background/60 transition-colors hover:border-gold/40"
                   >
                     <Heart className="h-3.5 w-3.5 fill-gold text-gold" />
                   </button>
 
                   {/* Image */}
                   <div
-                    className="flex h-48 cursor-pointer items-center justify-center bg-white/[0.02]"
+                    className="flex h-48 cursor-pointer items-center justify-center bg-black/[0.02]"
                     onClick={() => navigate({ to: "/products/$slug", params: { slug: p.slug } })}
                   >
                     <img src={p.img} alt={p.title} className="h-36 w-auto object-contain drop-shadow-[0_15px_25px_oklch(0_0_0/0.5)]" />

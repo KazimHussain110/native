@@ -5,7 +5,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Contact";
 import { CursorGlow } from "@/components/site/CursorGlow";
 import { MagneticButton } from "@/components/site/MagneticButton";
-import { Mail, MapPin, Clock, Instagram, Facebook, Youtube } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
@@ -43,7 +43,7 @@ function Field({ label, placeholder, type = "text" }: { label: string; placehold
       <input
         type={type}
         placeholder={placeholder}
-        className="w-full rounded-full border border-white/10 bg-white/[0.03] px-5 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
+        className="w-full rounded-full border border-black/8 bg-black/[0.02] px-5 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
       />
     </div>
   );
@@ -57,7 +57,7 @@ function FaqItem({ q, a, i }: { q: string; a: string; i: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: i * 0.08 }}
-      className="border-b border-white/8"
+      className="border-b border-black/8"
     >
       <button
         onClick={() => setOpen((v) => !v)}
@@ -103,23 +103,23 @@ function ContactPage() {
             className="mt-4 text-[clamp(3rem,8vw,7rem)] leading-[0.95]"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            We'd love to{" "}
-            <span className="text-serif-italic text-gold-gradient">hear from you</span>.
+            <span style={{ color: "#4a7c52" }}>We'd love to{" "}</span>
+            <span className="text-serif-italic text-gold-gradient">hear from you</span><span style={{ color: "#4a7c52" }}>.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-sm text-muted-foreground">
             Questions about products, sourcing, or your order? We read every message and reply within 24 hours.
           </p>
         </motion.div>
 
-        {/* Two-column layout */}
-        <div className="grid gap-8 lg:grid-cols-[1fr_420px]">
+        {/* Two-column layout with separator */}
+        <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
 
           {/* Left — form */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15 }}
-            className="glass-strong rounded-[2rem] p-8 md:p-12"
+            className="flex-1"
           >
             <h2 className="text-2xl" style={{ fontFamily: "var(--font-display)" }}>Send a message</h2>
             <p className="mt-2 text-sm text-muted-foreground">Fill in the form and we'll get back to you shortly.</p>
@@ -135,7 +135,7 @@ function ContactPage() {
                 <textarea
                   rows={5}
                   placeholder="I'd like to know more about Shilajit resin and which strength to start with…"
-                  className="w-full resize-none rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
+                  className="w-full resize-none rounded-2xl border border-black/8 bg-black/[0.02] p-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-gold/60"
                 />
               </div>
             </form>
@@ -146,84 +146,41 @@ function ContactPage() {
             </div>
           </motion.div>
 
-          {/* Right — info cards */}
-          <div className="flex flex-col gap-4">
+          {/* Separator */}
+          <div className="h-px w-full bg-black/8 lg:h-auto lg:w-px lg:self-stretch" />
 
-            {/* Contact details */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.25 }}
-              className="glass rounded-[1.5rem] p-7"
-            >
-              <h3 className="text-sm font-medium uppercase tracking-[0.2em]">Contact Info</h3>
-              <div className="mt-5 space-y-4">
-                {[
-                  { icon: Mail, label: "Email", value: "hello@nativerituals.co", href: "mailto:hello@nativerituals.co" },
-                  { icon: MapPin, label: "Origin", value: "Himalayan Sourced · India" },
-                  { icon: Clock, label: "Response time", value: "Within 24 hours" },
-                ].map(({ icon: Icon, label, value, href }) => (
-                  <div key={label} className="flex items-start gap-3">
-                    <div className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-gold/20 bg-gold/5">
-                      <Icon className="h-3.5 w-3.5 text-gold" />
-                    </div>
-                    <div>
-                      <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
-                      {href ? (
-                        <a href={href} className="mt-0.5 text-sm text-gold hover:underline">{value}</a>
-                      ) : (
-                        <p className="mt-0.5 text-sm">{value}</p>
-                      )}
-                    </div>
+          {/* Right — info card */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.25 }}
+            className="w-full lg:w-[360px] shrink-0"
+          >
+            <h3 className="text-sm font-medium uppercase tracking-[0.2em] text-gold">
+              Contact Info
+            </h3>
+            <div className="mt-5 space-y-6">
+              {[
+                { icon: Mail, label: "Email", value: "hello@nativerituals.co", href: "mailto:hello@nativerituals.co" },
+                { icon: MapPin, label: "Origin", value: "Himalayan Sourced · India" },
+                { icon: Clock, label: "Response time", value: "Within 24 hours" },
+              ].map(({ icon: Icon, label, value, href }) => (
+                <div key={label} className="flex items-start gap-4">
+                  <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/20 bg-gold/5">
+                    <Icon className="h-4 w-4 text-gold" />
                   </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Socials */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.35 }}
-              className="glass rounded-[1.5rem] p-7"
-            >
-              <h3 className="text-sm font-medium uppercase tracking-[0.2em]">Follow Us</h3>
-              <div className="mt-5 flex gap-3">
-                {[
-                  { icon: Instagram, label: "Instagram" },
-                  { icon: Facebook, label: "Facebook" },
-                  { icon: Youtube, label: "YouTube" },
-                ].map(({ icon: Icon, label }) => (
-                  <a
-                    key={label}
-                    href="#"
-                    aria-label={label}
-                    className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-muted-foreground transition-colors hover:border-gold/40 hover:text-gold"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Trust badges */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.45 }}
-              className="glass rounded-[1.5rem] p-7"
-            >
-              <h3 className="text-sm font-medium uppercase tracking-[0.2em]">Our Promise</h3>
-              <div className="mt-5 space-y-3">
-                {["Third-party lab tested", "30-day money-back guarantee", "Ethically sourced & harvested", "GMP certified facilities"].map((t) => (
-                  <div key={t} className="flex items-center gap-3">
-                    <span className="text-xs text-gold">✓</span>
-                    <p className="text-sm text-muted-foreground">{t}</p>
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
+                    {href ? (
+                      <a href={href} className="mt-1 block text-sm text-gold hover:underline">{value}</a>
+                    ) : (
+                      <p className="mt-1 text-sm text-foreground/90">{value}</p>
+                    )}
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
         {/* FAQ */}
@@ -240,7 +197,7 @@ function ContactPage() {
               className="mt-3 text-[clamp(2rem,5vw,4rem)] leading-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Common <span className="text-serif-italic text-gold-gradient">questions</span>.
+              <span style={{ color: "#4a7c52" }}>Common </span><span className="text-serif-italic text-gold-gradient">questions</span><span style={{ color: "#4a7c52" }}>.</span>
             </h2>
           </div>
           <div>
