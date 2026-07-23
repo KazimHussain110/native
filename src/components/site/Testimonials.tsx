@@ -162,7 +162,12 @@ export function Testimonials() {
                       style={{ width: CARD_WIDTH }}
                     >
                       {/* Green quotation mark */}
-                      <div className="text-7xl leading-none font-bold" style={{ fontFamily: "var(--font-display)", color: "#4a7c52" }}>"</div>
+                      <div
+                        className="text-7xl leading-none font-bold"
+                        style={{ fontFamily: "var(--font-display)", color: "#4a7c52" }}
+                      >
+                        "
+                      </div>
 
                       {/* Stars */}
                       <div className="mt-4">
@@ -173,7 +178,9 @@ export function Testimonials() {
                       <h3 className="mt-5 text-lg font-semibold text-foreground">{r.title}</h3>
 
                       {/* Review text */}
-                      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{r.text}</p>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">
+                        {r.text}
+                      </p>
 
                       {/* Avatar + name at bottom */}
                       <div className="mt-6 flex items-center gap-3 border-t border-black/8 pt-5">

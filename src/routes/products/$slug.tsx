@@ -84,7 +84,9 @@ function ProductPage() {
       <div className="flex min-h-screen items-center justify-center bg-background">
         <div className="text-center">
           <p className="text-muted-foreground">Product not found.</p>
-          <Link to="/" className="mt-4 inline-block text-gold underline">← Back home</Link>
+          <Link to="/" className="mt-4 inline-block text-gold underline">
+            ← Back home
+          </Link>
         </div>
       </div>
     );
@@ -141,7 +143,10 @@ function ProductPage() {
 
             <div className="flex flex-wrap gap-2">
               {product.details.map((d) => (
-                <span key={d} className="rounded-full border border-black/8 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                <span
+                  key={d}
+                  className="rounded-full border border-black/8 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
+                >
                   {d}
                 </span>
               ))}

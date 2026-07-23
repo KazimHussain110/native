@@ -80,16 +80,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "VerdantVessel — Luxury Packaging Manufacturing" },
-      { name: "description", content: "Premium manufacturer of glass, PET, aluminum and cosmetic packaging. Vessels engineered for the world's most demanding brands." },
+      {
+        name: "description",
+        content:
+          "Premium manufacturer of glass, PET, aluminum and cosmetic packaging. Vessels engineered for the world's most demanding brands.",
+      },
       { name: "author", content: "VerdantVessel" },
       { property: "og:title", content: "VerdantVessel — Luxury Packaging Manufacturing" },
-      { property: "og:description", content: "Premium manufacturer of glass, PET, aluminum and cosmetic packaging. Vessels engineered for the world's most demanding brands." },
+      {
+        property: "og:description",
+        content:
+          "Premium manufacturer of glass, PET, aluminum and cosmetic packaging. Vessels engineered for the world's most demanding brands.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "VerdantVessel — Luxury Packaging Manufacturing" },
-      { name: "twitter:description", content: "Premium manufacturer of glass, PET, aluminum and cosmetic packaging. Vessels engineered for the world's most demanding brands." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7019beb2-27f3-4ded-95c5-b686e9ac03d1/id-preview-d8f9a2d5--99e2122b-c60a-4cc2-b4d9-63deabe479dd.lovable.app-1784205797912.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7019beb2-27f3-4ded-95c5-b686e9ac03d1/id-preview-d8f9a2d5--99e2122b-c60a-4cc2-b4d9-63deabe479dd.lovable.app-1784205797912.png" },
+      {
+        name: "twitter:description",
+        content:
+          "Premium manufacturer of glass, PET, aluminum and cosmetic packaging. Vessels engineered for the world's most demanding brands.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7019beb2-27f3-4ded-95c5-b686e9ac03d1/id-preview-d8f9a2d5--99e2122b-c60a-4cc2-b4d9-63deabe479dd.lovable.app-1784205797912.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/7019beb2-27f3-4ded-95c5-b686e9ac03d1/id-preview-d8f9a2d5--99e2122b-c60a-4cc2-b4d9-63deabe479dd.lovable.app-1784205797912.png",
+      },
     ],
     links: [
       {
@@ -135,7 +155,9 @@ function RootComponent() {
   useEffect(() => {
     // Dismiss initial load
     timer.current = setTimeout(() => setLoading(false), 1200);
-    return () => { if (timer.current) clearTimeout(timer.current); };
+    return () => {
+      if (timer.current) clearTimeout(timer.current);
+    };
   }, []);
 
   useEffect(() => {

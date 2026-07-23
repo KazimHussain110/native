@@ -44,9 +44,13 @@ function AboutPage() {
             className="mt-4 text-[clamp(2.5rem,7vw,6.5rem)] leading-[0.95] tracking-tight"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            <span style={{ color: "#4a7c52" }}>Formed by </span><span className="text-serif-italic text-gold-gradient">nature</span><span style={{ color: "#4a7c52" }}>,</span>
+            <span style={{ color: "#4a7c52" }}>Formed by </span>
+            <span className="text-serif-italic text-gold-gradient">nature</span>
+            <span style={{ color: "#4a7c52" }}>,</span>
             <br />
-            <span style={{ color: "#4a7c52" }}>Perfected by </span><span className="text-serif-italic text-gold-gradient">ritual</span><span style={{ color: "#4a7c52" }}>.</span>
+            <span style={{ color: "#4a7c52" }}>Perfected by </span>
+            <span className="text-serif-italic text-gold-gradient">ritual</span>
+            <span style={{ color: "#4a7c52" }}>.</span>
           </h1>
           <p className="mx-auto mt-8 max-w-xl text-sm leading-relaxed text-muted-foreground">
             We build Bridges between ancient Ayurvedic wisdom and modern clinical validation. No
@@ -106,7 +110,10 @@ function AboutPage() {
         <div className="mb-32">
           <div className="text-center mb-16">
             <span className="text-[10px] uppercase tracking-[0.4em] text-gold">Our Standards</span>
-            <h2 className="mt-3 text-3xl md:text-4xl" style={{ fontFamily: "var(--font-display)", color: "#4a7c52" }}>
+            <h2
+              className="mt-3 text-3xl md:text-4xl"
+              style={{ fontFamily: "var(--font-display)", color: "#4a7c52" }}
+            >
               The Pillars of Native Rituals
             </h2>
           </div>
@@ -244,7 +251,9 @@ function AboutPage() {
             className="text-3xl md:text-5xl leading-tight mb-6"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            <span style={{ color: "#4a7c52" }}>Elevate your daily </span><span className="text-serif-italic text-gold-gradient">vessel</span><span style={{ color: "#4a7c52" }}>.</span>
+            <span style={{ color: "#4a7c52" }}>Elevate your daily </span>
+            <span className="text-serif-italic text-gold-gradient">vessel</span>
+            <span style={{ color: "#4a7c52" }}>.</span>
           </h2>
           <p className="mx-auto max-w-md text-sm text-muted-foreground mb-8">
             Experience the difference of ancient elemental extracts purified with clean scientific

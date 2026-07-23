@@ -39,33 +39,48 @@ const ANCHORS = [
 const ARROWS = [
   {
     // 01 → 02: left to right across the top, bows upward
-    x1: 230, y1: 110,
-    x2: 570, y2: 110,
-    qx: 400, qy:  50,
+    x1: 230,
+    y1: 110,
+    x2: 570,
+    y2: 110,
+    qx: 400,
+    qy: 50,
   },
   {
     // 02 → 03: top-right down to bottom-center, bows right
-    x1: 660, y1: 185,
-    x2: 460, y2: 355,
-    qx: 700, qy: 310,
+    x1: 660,
+    y1: 185,
+    x2: 460,
+    y2: 355,
+    qx: 700,
+    qy: 310,
   },
   {
     // 03 → 01: bottom-center up to top-left, bows left
-    x1: 340, y1: 355,
-    x2: 140, y2: 185,
-    qx: 100, qy: 310,
+    x1: 340,
+    y1: 355,
+    x2: 140,
+    y2: 185,
+    qx: 100,
+    qy: 310,
   },
 ];
 
 const ARROW_LEN = 200;
 
 /* ── Animated arrow ── */
-function Arrow({ a, offset }: { a: typeof ARROWS[number]; offset: MotionValue<number> }) {
+function Arrow({ a, offset }: { a: (typeof ARROWS)[number]; offset: MotionValue<number> }) {
   const d = `M ${a.x1} ${a.y1} Q ${a.qx} ${a.qy} ${a.x2} ${a.y2}`;
   return (
     <>
       {/* Dim track */}
-      <path d={d} stroke="oklch(0 0 0 / 0.08)" strokeWidth="1.2" fill="none" markerEnd="url(#arr-dim)" />
+      <path
+        d={d}
+        stroke="oklch(0 0 0 / 0.08)"
+        strokeWidth="1.2"
+        fill="none"
+        markerEnd="url(#arr-dim)"
+      />
       {/* Gold animated */}
       <motion.path
         d={d}
@@ -82,21 +97,26 @@ function Arrow({ a, offset }: { a: typeof ARROWS[number]; offset: MotionValue<nu
 }
 
 /* ── Card ── */
-function CircuitCard({ anchor, step, index, progress }: {
+function CircuitCard({
+  anchor,
+  step,
+  index,
+  progress,
+}: {
   anchor: { cx: number; cy: number };
   step: (typeof steps)[number];
   index: number;
   progress: MotionValue<number>;
 }) {
-  const ref    = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
 
-  const isLeft   = index === 0;
-  const isRight  = index === 1;
+  const isLeft = index === 0;
+  const isRight = index === 1;
   const isBottom = index === 2;
 
   const leftPct = (anchor.cx / VB_W) * 100;
-  const topPct  = (anchor.cy / VB_H) * 100;
+  const topPct = (anchor.cy / VB_H) * 100;
 
   return (
     <div
@@ -104,11 +124,13 @@ function CircuitCard({ anchor, step, index, progress }: {
       className="absolute"
       style={{
         left: `${leftPct}%`,
-        top:  `${topPct}%`,
+        top: `${topPct}%`,
         width: "clamp(180px, 22vw, 240px)",
-        transform: isLeft   ? "translate(-50%, -50%)"
-                 : isRight  ? "translate(-50%, -50%)"
-                 : "translate(-50%, -50%)",
+        transform: isLeft
+          ? "translate(-50%, -50%)"
+          : isRight
+            ? "translate(-50%, -50%)"
+            : "translate(-50%, -50%)",
       }}
     >
       <motion.div
@@ -148,20 +170,27 @@ export function ProcessCircuit() {
   const progress = useSpring(scrollYProgress, { stiffness: 55, damping: 20 });
 
   // Three arrows draw in sequence
-  const off0 = useTransform(progress, [0.05, 0.4],  [ARROW_LEN, 0]);
-  const off1 = useTransform(progress, [0.35, 0.7],  [ARROW_LEN, 0]);
+  const off0 = useTransform(progress, [0.05, 0.4], [ARROW_LEN, 0]);
+  const off1 = useTransform(progress, [0.35, 0.7], [ARROW_LEN, 0]);
   const off2 = useTransform(progress, [0.65, 0.95], [ARROW_LEN, 0]);
 
   return (
     <section ref={sectionRef} className="relative py-32 md:py-40">
       <SectionHeading
         eyebrow="How It Flows"
-        title={<><span style={{ color: "#4a7c52" }}>What it does </span><span className="text-serif-italic text-gold-gradient">for you</span>.</>}
+        title={
+          <>
+            <span style={{ color: "#4a7c52" }}>What it does </span>
+            <span className="text-serif-italic text-gold-gradient">for you</span>.
+          </>
+        }
       />
 
       <div className="relative mx-auto mt-20 max-w-3xl px-6">
-        <div className="relative w-full" style={{ paddingBottom: isMobile ? "145%" : `${(VB_H / VB_W) * 100}%` }}>
-
+        <div
+          className="relative w-full"
+          style={{ paddingBottom: isMobile ? "145%" : `${(VB_H / VB_W) * 100}%` }}
+        >
           {/* SVG arrows only — no loop */}
           <svg
             viewBox={`0 0 ${VB_W} ${VB_H}`}
@@ -169,7 +198,14 @@ export function ProcessCircuit() {
             fill="none"
           >
             <defs>
-              <marker id="arr-gold" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+              <marker
+                id="arr-gold"
+                markerWidth="7"
+                markerHeight="7"
+                refX="5"
+                refY="3"
+                orient="auto"
+              >
                 <path d="M0,0 L0,6 L7,3 Z" fill="oklch(0.78 0.14 85)" />
               </marker>
               <marker id="arr-dim" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">

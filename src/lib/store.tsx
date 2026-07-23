@@ -19,11 +19,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<string[]>([]);
   const [wishlist, setWishlist] = useState<string[]>([]);
 
-  const addToCart = (slug: string) =>
-    setCart((p) => (p.includes(slug) ? p : [...p, slug]));
+  const addToCart = (slug: string) => setCart((p) => (p.includes(slug) ? p : [...p, slug]));
 
-  const removeFromCart = (slug: string) =>
-    setCart((p) => p.filter((s) => s !== slug));
+  const removeFromCart = (slug: string) => setCart((p) => p.filter((s) => s !== slug));
 
   const toggleWishlist = (slug: string) =>
     setWishlist((p) => (p.includes(slug) ? p.filter((s) => s !== slug) : [...p, slug]));
@@ -32,7 +30,17 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   const wishlistItems = products.filter((p) => wishlist.includes(p.slug));
 
   return (
-    <StoreContext.Provider value={{ cart, wishlist, addToCart, removeFromCart, toggleWishlist, cartItems, wishlistItems }}>
+    <StoreContext.Provider
+      value={{
+        cart,
+        wishlist,
+        addToCart,
+        removeFromCart,
+        toggleWishlist,
+        cartItems,
+        wishlistItems,
+      }}
+    >
       {children}
     </StoreContext.Provider>
   );

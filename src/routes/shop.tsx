@@ -13,7 +13,10 @@ export const Route = createFileRoute("/shop")({
   head: () => ({
     meta: [
       { title: "Shop — Native Rituals" },
-      { name: "description", content: "Shop pure Himalayan Shilajit, Ashwagandha and adaptogenic blends." },
+      {
+        name: "description",
+        content: "Shop pure Himalayan Shilajit, Ashwagandha and adaptogenic blends.",
+      },
     ],
   }),
 });
@@ -26,7 +29,8 @@ function filterProducts(filter: string, query: string) {
   const q = query.toLowerCase().trim();
   return products.filter((p) => {
     const matchesFilter = filter === "All" || p.title.toLowerCase().includes(filter.toLowerCase());
-    const matchesQuery = !q || p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
+    const matchesQuery =
+      !q || p.title.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q);
     return matchesFilter && matchesQuery;
   });
 }
@@ -56,7 +60,14 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
-function ProductCard({ p, i, onCart, onWishlist, wishlisted, inCart }: {
+function ProductCard({
+  p,
+  i,
+  onCart,
+  onWishlist,
+  wishlisted,
+  inCart,
+}: {
   p: (typeof products)[number];
   i: number;
   onCart: (slug: string) => void;
@@ -104,7 +115,6 @@ function ProductCard({ p, i, onCart, onWishlist, wishlisted, inCart }: {
           className="h-44 w-auto object-contain drop-shadow-[0_20px_30px_oklch(0_0_0/0.5)]"
         />
 
-
         {/* Wishlist button — top right */}
         <button
           onClick={handleWishlist}
@@ -112,7 +122,10 @@ function ProductCard({ p, i, onCart, onWishlist, wishlisted, inCart }: {
         >
           <Heart
             className="h-3.5 w-3.5 transition-colors"
-            style={{ color: wishlisted ? "oklch(0.78 0.14 85)" : "oklch(0.68 0.02 100)", fill: wishlisted ? "oklch(0.78 0.14 85)" : "none" }}
+            style={{
+              color: wishlisted ? "oklch(0.78 0.14 85)" : "oklch(0.68 0.02 100)",
+              fill: wishlisted ? "oklch(0.78 0.14 85)" : "none",
+            }}
           />
         </button>
       </div>
@@ -135,9 +148,18 @@ function ProductCard({ p, i, onCart, onWishlist, wishlisted, inCart }: {
           {/* Cart button with border-fill circle */}
           <div className="relative h-11 w-11 shrink-0">
             <svg className="absolute inset-0 -rotate-90" width="44" height="44" viewBox="0 0 44 44">
-              <circle cx="22" cy="22" r="20" fill="none" stroke="oklch(1 0 0 / 0.1)" strokeWidth="1.5" />
               <circle
-                cx="22" cy="22" r="20"
+                cx="22"
+                cy="22"
+                r="20"
+                fill="none"
+                stroke="oklch(1 0 0 / 0.1)"
+                strokeWidth="1.5"
+              />
+              <circle
+                cx="22"
+                cy="22"
+                r="20"
                 fill="none"
                 stroke="oklch(0.78 0.14 85)"
                 strokeWidth="1.5"
@@ -147,10 +169,7 @@ function ProductCard({ p, i, onCart, onWishlist, wishlisted, inCart }: {
                 style={{ transition: "stroke-dashoffset 0.6s cubic-bezier(0.4,0,0.2,1)" }}
               />
             </svg>
-            <button
-              onClick={handleCart}
-              className="absolute inset-0 grid place-items-center"
-            >
+            <button onClick={handleCart} className="absolute inset-0 grid place-items-center">
               <AnimatePresence mode="wait">
                 {cartAdded ? (
                   <motion.span
@@ -194,7 +213,6 @@ function ShopPage() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pb-32 pt-36">
-
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -206,7 +224,9 @@ function ShopPage() {
             className="text-[clamp(2.8rem,6vw,5rem)] leading-[0.95]"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            <span style={{ color: "#4a7c52" }}>Shop </span><span className="text-serif-italic text-gold-gradient">Native Rituals</span><span style={{ color: "#4a7c52" }}>.</span>
+            <span style={{ color: "#4a7c52" }}>Shop </span>
+            <span className="text-serif-italic text-gold-gradient">Native Rituals</span>
+            <span style={{ color: "#4a7c52" }}>.</span>
           </h1>
         </motion.div>
 
@@ -235,7 +255,10 @@ function ShopPage() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.15 }}
-                  onClick={() => { setQuery(""); inputRef.current?.focus(); }}
+                  onClick={() => {
+                    setQuery("");
+                    inputRef.current?.focus();
+                  }}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/50 hover:text-gold"
                 >
                   <X className="h-3.5 w-3.5" />
@@ -265,12 +288,17 @@ function ShopPage() {
         {/* Grid */}
         <AnimatePresence mode="popLayout">
           {filtered.length > 0 ? (
-            <motion.div
-              key="grid"
-              className="grid grid-cols-2 gap-5 lg:grid-cols-4"
-            >
+            <motion.div key="grid" className="grid grid-cols-2 gap-5 lg:grid-cols-4">
               {filtered.map((p, i) => (
-                <ProductCard key={p.slug} p={p} i={i} onCart={addToCart} onWishlist={toggleWishlist} wishlisted={wishlist.includes(p.slug)} inCart={cart.includes(p.slug)} />
+                <ProductCard
+                  key={p.slug}
+                  p={p}
+                  i={i}
+                  onCart={addToCart}
+                  onWishlist={toggleWishlist}
+                  wishlisted={wishlist.includes(p.slug)}
+                  inCart={cart.includes(p.slug)}
+                />
               ))}
             </motion.div>
           ) : (
@@ -281,10 +309,17 @@ function ShopPage() {
               exit={{ opacity: 0 }}
               className="py-24 text-center"
             >
-              <p className="text-2xl" style={{ fontFamily: "var(--font-display)" }}>No results found.</p>
-              <p className="mt-3 text-sm text-muted-foreground">Try a different search or filter.</p>
+              <p className="text-2xl" style={{ fontFamily: "var(--font-display)" }}>
+                No results found.
+              </p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Try a different search or filter.
+              </p>
               <button
-                onClick={() => { setQuery(""); setActiveFilter("All"); }}
+                onClick={() => {
+                  setQuery("");
+                  setActiveFilter("All");
+                }}
                 className="mt-6 rounded-full border border-black/8 px-6 py-2.5 text-[10px] uppercase tracking-[0.25em] text-muted-foreground transition-colors hover:border-gold/40 hover:text-gold"
               >
                 Clear filters
@@ -300,11 +335,17 @@ function ShopPage() {
           transition={{ duration: 1, delay: 0.5 }}
           className="mt-20 flex flex-wrap justify-center gap-8 border-t border-black/5 pt-12"
         >
-          {["Free shipping over $60", "30-day guarantee", "Lab verified · COA included", "Ethically sourced"].map((t) => (
-            <p key={t} className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50">{t}</p>
+          {[
+            "Free shipping over $60",
+            "30-day guarantee",
+            "Lab verified · COA included",
+            "Ethically sourced",
+          ].map((t) => (
+            <p key={t} className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/50">
+              {t}
+            </p>
           ))}
         </motion.div>
-
       </div>
 
       <Footer />

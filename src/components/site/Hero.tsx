@@ -1,13 +1,20 @@
-import { motion, useScroll, useTransform, useSpring, useMotionValue, MotionValue } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useMotionValue,
+  MotionValue,
+} from "motion/react";
 import { useRef } from "react";
 
 const BASE = "/hero-banner-parallex-layers/hero-banner-parallex-layers";
 
 const LAYERS = [
-  { src: `${BASE}/hero-banner-layer-1.png`,      scrollSpeed: 0.10, hoverStrength: 22 },
+  { src: `${BASE}/hero-banner-layer-1.png`, scrollSpeed: 0.1, hoverStrength: 22 },
   { src: `${BASE}/hero-banner-text-layer-2.png`, scrollSpeed: 0.22, hoverStrength: 16 },
-  { src: `${BASE}/bottom-sote-layer-3.png`,      scrollSpeed: 0.36, hoverStrength: 8  },
-  { src: `${BASE}/main-bottle-layer-4.png`,      scrollSpeed: 0.55, hoverStrength: 4  },
+  { src: `${BASE}/bottom-sote-layer-3.png`, scrollSpeed: 0.36, hoverStrength: 8 },
+  { src: `${BASE}/main-bottle-layer-4.png`, scrollSpeed: 0.55, hoverStrength: 4 },
 ];
 
 function ParallaxLayer({
@@ -49,8 +56,8 @@ export function Hero() {
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
     const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    rawX.set((e.clientX - left) / width  * 2 - 1);
-    rawY.set((e.clientY - top)  / height * 2 - 1);
+    rawX.set(((e.clientX - left) / width) * 2 - 1);
+    rawY.set(((e.clientY - top) / height) * 2 - 1);
   }
 
   function handleMouseLeave() {

@@ -11,7 +11,7 @@ import { Stats } from "@/components/site/Stats";
 import { Testimonials } from "@/components/site/Testimonials";
 import { Contact, Footer } from "@/components/site/Contact";
 import { CursorGlow } from "@/components/site/CursorGlow";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type CSSProperties } from "react";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -55,11 +55,11 @@ function Index() {
   }, []);
 
   return (
-    <main className="relative bg-background">
+    <main className="relative w-full max-w-full overflow-x-clip bg-background md:overflow-x-visible">
       <CursorGlow />
       <div
-        className="relative z-10 bg-background"
-        style={{ marginBottom: footerHeight }}
+        className="relative z-10 mb-0 bg-background md:mb-[var(--footer-height)]"
+        style={{ "--footer-height": `${footerHeight}px` } as CSSProperties}
       >
         <Nav />
         <Hero />

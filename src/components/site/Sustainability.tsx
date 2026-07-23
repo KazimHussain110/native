@@ -5,7 +5,6 @@ export function Sustainability() {
     <section id="sustainability" className="relative py-32 md:py-40">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid items-center gap-16 lg:grid-cols-2">
-
           {/* Left — landscape image */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -35,31 +34,29 @@ export function Sustainability() {
               className="text-4xl leading-[1.05] md:text-5xl lg:text-6xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              <span style={{ color: "#4a7c52" }}>Rooted in the{" "}</span>
+              <span style={{ color: "#4a7c52" }}>Rooted in the </span>
               <span className="text-serif-italic text-gold-gradient">ancient world</span>.
             </h2>
 
             <p className="text-base leading-relaxed text-muted-foreground">
-              Native Rituals was born from a simple frustration: the supplements
-              industry had forgotten where it came from. Shilajit was being sold
-              in plastic tubs with ingredient lists no one could pronounce.
-              Ashwagandha was being diluted, standardised down to nothing, and
-              dressed up in marketing that promised everything and delivered little.
+              Native Rituals was born from a simple frustration: the supplements industry had
+              forgotten where it came from. Shilajit was being sold in plastic tubs with ingredient
+              lists no one could pronounce. Ashwagandha was being diluted, standardised down to
+              nothing, and dressed up in marketing that promised everything and delivered little.
             </p>
 
             <p className="text-base leading-relaxed text-muted-foreground">
-              We went back to the source. Literally. Our founders travelled to the
-              Himalayan ranges of Ladakh and the farms of Madhya Pradesh to find
-              partners who still harvested the way their grandparents did — with
-              patience, with respect for the land, and with no shortcuts.
+              We went back to the source. Literally. Our founders travelled to the Himalayan ranges
+              of Ladakh and the farms of Madhya Pradesh to find partners who still harvested the way
+              their grandparents did — with patience, with respect for the land, and with no
+              shortcuts.
             </p>
 
             <p className="text-base leading-relaxed text-muted-foreground">
-              Every product we make carries a certificate of analysis from an
-              independent third-party lab. Every batch is tested for heavy metals,
-              microbial contamination and active compound potency before it ships.
-              We publish the results. We have nothing to hide because we have
-              nothing to hide behind.
+              Every product we make carries a certificate of analysis from an independent
+              third-party lab. Every batch is tested for heavy metals, microbial contamination and
+              active compound potency before it ships. We publish the results. We have nothing to
+              hide because we have nothing to hide behind.
             </p>
 
             <a
@@ -70,7 +67,6 @@ export function Sustainability() {
               <span aria-hidden>→</span>
             </a>
           </motion.div>
-
         </div>
       </div>
     </section>
