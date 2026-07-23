@@ -36,7 +36,9 @@ function CartPage() {
           className="mb-12 text-[clamp(2.2rem,5vw,4rem)] leading-[0.95]"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          <span style={{ color: "#4a7c52" }}>Your </span><span className="text-serif-italic text-gold-gradient">Cart</span><span style={{ color: "#4a7c52" }}>.</span>
+          <span style={{ color: "#4a7c52" }}>Your </span>
+          <span className="text-serif-italic text-gold-gradient">Cart</span>
+          <span style={{ color: "#4a7c52" }}>.</span>
         </motion.h1>
 
         <AnimatePresence mode="popLayout">
@@ -102,10 +104,10 @@ function CartPage() {
               <motion.div
                 layout
                 className="mt-6 rounded-2xl p-6"
-                  style={{
-                    background: "color-mix(in oklab, oklch(0 0 0) 2%, transparent)",
-                    border: "1px solid color-mix(in oklab, var(--gold) 14%, transparent)",
-                  }}
+                style={{
+                  background: "color-mix(in oklab, oklch(0 0 0) 2%, transparent)",
+                  border: "1px solid color-mix(in oklab, var(--gold) 14%, transparent)",
+                }}
               >
                 <div className="flex items-center justify-between">
                   <p className="text-sm text-muted-foreground">

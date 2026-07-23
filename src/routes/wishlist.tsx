@@ -32,7 +32,9 @@ function WishlistPage() {
           className="mb-12 text-[clamp(2.2rem,5vw,4rem)] leading-[0.95]"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          <span style={{ color: "#4a7c52" }}>Your </span><span className="text-serif-italic text-gold-gradient">Wishlist</span><span style={{ color: "#4a7c52" }}>.</span>
+          <span style={{ color: "#4a7c52" }}>Your </span>
+          <span className="text-serif-italic text-gold-gradient">Wishlist</span>
+          <span style={{ color: "#4a7c52" }}>.</span>
         </motion.h1>
 
         <AnimatePresence mode="popLayout">
@@ -54,10 +56,7 @@ function WishlistPage() {
               </button>
             </motion.div>
           ) : (
-            <motion.div
-              key="items"
-              className="grid grid-cols-1 gap-4 sm:grid-cols-2"
-            >
+            <motion.div key="items" className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {wishlistItems.map((p, i) => (
                 <motion.div
                   key={p.slug}
@@ -85,7 +84,11 @@ function WishlistPage() {
                     className="flex h-48 cursor-pointer items-center justify-center bg-black/[0.02]"
                     onClick={() => navigate({ to: "/products/$slug", params: { slug: p.slug } })}
                   >
-                    <img src={p.img} alt={p.title} className="h-36 w-auto object-contain drop-shadow-[0_15px_25px_oklch(0_0_0/0.5)]" />
+                    <img
+                      src={p.img}
+                      alt={p.title}
+                      className="h-36 w-auto object-contain drop-shadow-[0_15px_25px_oklch(0_0_0/0.5)]"
+                    />
                   </div>
 
                   {/* Info */}
@@ -94,7 +97,9 @@ function WishlistPage() {
                       <p className="text-[9px] uppercase tracking-[0.3em] text-gold/60">{p.tag}</p>
                       <h3
                         className="mt-1 cursor-pointer text-base leading-tight transition-colors hover:text-gold"
-                        onClick={() => navigate({ to: "/products/$slug", params: { slug: p.slug } })}
+                        onClick={() =>
+                          navigate({ to: "/products/$slug", params: { slug: p.slug } })
+                        }
                       >
                         {p.title}
                       </h3>
@@ -102,7 +107,10 @@ function WishlistPage() {
                     </div>
 
                     <button
-                      onClick={() => { addToCart(p.slug); navigate({ to: "/cart" }); }}
+                      onClick={() => {
+                        addToCart(p.slug);
+                        navigate({ to: "/cart" });
+                      }}
                       className={`flex w-full items-center justify-center gap-2 rounded-full py-3 text-[10px] uppercase tracking-[0.2em] transition-all ${
                         cart.includes(p.slug)
                           ? "border border-gold/40 text-gold"

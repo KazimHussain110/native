@@ -2,10 +2,10 @@ import { motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { value: 3,    suffix: "+",  label: "years sourcing" },
-  { value: 10,   suffix: "k+", label: "customers" },
-  { value: 85,   suffix: "+",  label: "trace minerals" },
-  { value: 100,  suffix: "%",  label: "lab verified" },
+  { value: 3, suffix: "+", label: "years sourcing" },
+  { value: 10, suffix: "k+", label: "customers" },
+  { value: 85, suffix: "+", label: "trace minerals" },
+  { value: 100, suffix: "%", label: "lab verified" },
 ];
 
 function Counter({ to, suffix }: { to: number; suffix: string }) {
@@ -51,10 +51,15 @@ export function Stats() {
               transition={{ duration: 0.8, delay: i * 0.1 }}
               className="relative bg-background/40 p-10 text-center backdrop-blur-md"
             >
-              <div className="text-5xl md:text-7xl text-gold-gradient" style={{ fontFamily: "var(--font-display)" }}>
+              <div
+                className="text-5xl md:text-7xl text-gold-gradient"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
                 <Counter to={s.value} suffix={s.suffix} />
               </div>
-              <p className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">{s.label}</p>
+              <p className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                {s.label}
+              </p>
             </motion.div>
           ))}
         </div>

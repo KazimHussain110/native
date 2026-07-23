@@ -4,7 +4,10 @@ export function CursorGlow() {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     let raf = 0;
-    let tx = 0, ty = 0, cx = 0, cy = 0;
+    let tx = 0,
+      ty = 0,
+      cx = 0,
+      cy = 0;
     const onMove = (e: MouseEvent) => {
       tx = e.clientX;
       ty = e.clientY;

@@ -12,7 +12,10 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Native Rituals" },
-      { name: "description", content: "Get in touch with Native Rituals. We reply within 24 hours." },
+      {
+        name: "description",
+        content: "Get in touch with Native Rituals. We reply within 24 hours.",
+      },
     ],
   }),
 });
@@ -36,10 +39,20 @@ const FAQS = [
   },
 ];
 
-function Field({ label, placeholder, type = "text" }: { label: string; placeholder: string; type?: string }) {
+function Field({
+  label,
+  placeholder,
+  type = "text",
+}: {
+  label: string;
+  placeholder: string;
+  type?: string;
+}) {
   return (
     <div>
-      <label className="mb-2 block text-[10px] uppercase tracking-[0.28em] text-muted-foreground">{label}</label>
+      <label className="mb-2 block text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
+        {label}
+      </label>
       <input
         type={type}
         placeholder={placeholder}
@@ -64,7 +77,11 @@ function FaqItem({ q, a, i }: { q: string; a: string; i: number }) {
         className="flex w-full items-center justify-between py-5 text-left text-sm font-medium transition-colors hover:text-gold"
       >
         {q}
-        <span className={`ml-4 shrink-0 text-gold transition-transform duration-300 ${open ? "rotate-45" : ""}`}>+</span>
+        <span
+          className={`ml-4 shrink-0 text-gold transition-transform duration-300 ${open ? "rotate-45" : ""}`}
+        >
+          +
+        </span>
       </button>
       <motion.div
         initial={false}
@@ -90,7 +107,6 @@ function ContactPage() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 pb-32 pt-36">
-
         {/* Hero heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -103,17 +119,18 @@ function ContactPage() {
             className="mt-4 text-[clamp(3rem,8vw,7rem)] leading-[0.95]"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            <span style={{ color: "#4a7c52" }}>We'd love to{" "}</span>
-            <span className="text-serif-italic text-gold-gradient">hear from you</span><span style={{ color: "#4a7c52" }}>.</span>
+            <span style={{ color: "#4a7c52" }}>We'd love to </span>
+            <span className="text-serif-italic text-gold-gradient">hear from you</span>
+            <span style={{ color: "#4a7c52" }}>.</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-sm text-muted-foreground">
-            Questions about products, sourcing, or your order? We read every message and reply within 24 hours.
+            Questions about products, sourcing, or your order? We read every message and reply
+            within 24 hours.
           </p>
         </motion.div>
 
         {/* Two-column layout with separator */}
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-16">
-
           {/* Left — form */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -121,8 +138,12 @@ function ContactPage() {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="flex-1"
           >
-            <h2 className="text-2xl" style={{ fontFamily: "var(--font-display)" }}>Send a message</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Fill in the form and we'll get back to you shortly.</p>
+            <h2 className="text-2xl" style={{ fontFamily: "var(--font-display)" }}>
+              Send a message
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Fill in the form and we'll get back to you shortly.
+            </p>
 
             <form className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2">
               <Field label="Your name" placeholder="Jane Doe" />
@@ -131,7 +152,9 @@ function ContactPage() {
                 <Field label="Subject" placeholder="Which product is right for me?" />
               </div>
               <div className="md:col-span-2">
-                <label className="mb-2 block text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Message</label>
+                <label className="mb-2 block text-[10px] uppercase tracking-[0.28em] text-muted-foreground">
+                  Message
+                </label>
                 <textarea
                   rows={5}
                   placeholder="I'd like to know more about Shilajit resin and which strength to start with…"
@@ -142,7 +165,9 @@ function ContactPage() {
 
             <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
               <MagneticButton>Send Message →</MagneticButton>
-              <p className="text-xs text-muted-foreground">We reply within <span className="text-gold">24 hours</span>.</p>
+              <p className="text-xs text-muted-foreground">
+                We reply within <span className="text-gold">24 hours</span>.
+              </p>
             </div>
           </motion.div>
 
@@ -161,7 +186,12 @@ function ContactPage() {
             </h3>
             <div className="mt-5 space-y-6">
               {[
-                { icon: Mail, label: "Email", value: "hello@nativerituals.co", href: "mailto:hello@nativerituals.co" },
+                {
+                  icon: Mail,
+                  label: "Email",
+                  value: "hello@nativerituals.co",
+                  href: "mailto:hello@nativerituals.co",
+                },
                 { icon: MapPin, label: "Origin", value: "Himalayan Sourced · India" },
                 { icon: Clock, label: "Response time", value: "Within 24 hours" },
               ].map(({ icon: Icon, label, value, href }) => (
@@ -170,9 +200,13 @@ function ContactPage() {
                     <Icon className="h-4 w-4 text-gold" />
                   </div>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                      {label}
+                    </p>
                     {href ? (
-                      <a href={href} className="mt-1 block text-sm text-gold hover:underline">{value}</a>
+                      <a href={href} className="mt-1 block text-sm text-gold hover:underline">
+                        {value}
+                      </a>
                     ) : (
                       <p className="mt-1 text-sm text-foreground/90">{value}</p>
                     )}
@@ -197,7 +231,9 @@ function ContactPage() {
               className="mt-3 text-[clamp(2rem,5vw,4rem)] leading-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              <span style={{ color: "#4a7c52" }}>Common </span><span className="text-serif-italic text-gold-gradient">questions</span><span style={{ color: "#4a7c52" }}>.</span>
+              <span style={{ color: "#4a7c52" }}>Common </span>
+              <span className="text-serif-italic text-gold-gradient">questions</span>
+              <span style={{ color: "#4a7c52" }}>.</span>
             </h2>
           </div>
           <div>
@@ -206,7 +242,6 @@ function ContactPage() {
             ))}
           </div>
         </motion.div>
-
       </div>
 
       <Footer />

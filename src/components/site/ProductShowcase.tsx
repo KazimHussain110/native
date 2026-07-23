@@ -32,7 +32,10 @@ function Stars({ rating, uid }: { rating: number; uid: string }) {
 }
 
 function ProductCard({
-  p, i, onClick, dimmed,
+  p,
+  i,
+  onClick,
+  dimmed,
 }: {
   p: (typeof products)[number];
   i: number;
@@ -89,9 +92,18 @@ function ProductCard({
           {/* Arrow circle — desktop only */}
           <div className="relative hidden h-11 w-11 shrink-0 place-items-center md:grid">
             <svg className="absolute inset-0 -rotate-90" width="44" height="44" viewBox="0 0 44 44">
-              <circle cx="22" cy="22" r="20" fill="none" stroke="oklch(1 0 0 / 0.1)" strokeWidth="1.5" />
               <circle
-                cx="22" cy="22" r="20"
+                cx="22"
+                cy="22"
+                r="20"
+                fill="none"
+                stroke="oklch(1 0 0 / 0.1)"
+                strokeWidth="1.5"
+              />
+              <circle
+                cx="22"
+                cy="22"
+                r="20"
                 fill="none"
                 stroke="oklch(0.78 0.14 85)"
                 strokeWidth="1.5"
@@ -101,7 +113,9 @@ function ProductCard({
                 style={{ transition: "stroke-dashoffset 0.6s cubic-bezier(0.4,0,0.2,1)" }}
               />
             </svg>
-            <span className="relative text-gold transition-transform duration-500 group-hover:rotate-45">→</span>
+            <span className="relative text-gold transition-transform duration-500 group-hover:rotate-45">
+              →
+            </span>
           </div>
         </div>
       </div>
@@ -160,7 +174,10 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
             transition={{ duration: 0.25, delay: 0.3 }}
           >
             {p.details.map((d) => (
-              <span key={d} className="rounded-full border border-black/8 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <span
+                key={d}
+                className="rounded-full border border-black/8 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
+              >
                 {d}
               </span>
             ))}
@@ -176,7 +193,9 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
           transition={{ duration: 0.25, delay: 0.28 }}
         >
           <div>
-            <p className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">Starting from</p>
+            <p className="text-[10px] uppercase tracking-[0.35em] text-muted-foreground">
+              Starting from
+            </p>
             <p className="mt-2 text-5xl font-semibold text-gold">{p.price}</p>
             <p className="mt-1 text-xs text-muted-foreground">per unit · MOQ 5,000</p>
 
@@ -238,11 +257,18 @@ export function ProductShowcase() {
 
       <SectionHeading
         eyebrow="The Collection"
-        title={<><span style={{ color: "#4a7c52" }}>Featured products</span>.</>}
+        title={
+          <>
+            <span style={{ color: "#4a7c52" }}>Featured products</span>.
+          </>
+        }
       />
 
       <LayoutGroup>
-        <div className="mx-auto mt-20 grid max-w-7xl grid-cols-2 gap-4 px-6 md:grid-cols-4 md:gap-6" style={{ isolation: "isolate" }}>
+        <div
+          className="mx-auto mt-20 grid max-w-7xl grid-cols-2 gap-4 px-6 md:grid-cols-4 md:gap-6"
+          style={{ isolation: "isolate" }}
+        >
           {products.map((p, i) => (
             <ProductCard
               key={p.slug}
@@ -256,10 +282,7 @@ export function ProductShowcase() {
 
         <AnimatePresence>
           {activeIndex !== null && (
-            <ExpandedCard
-              p={products[activeIndex]}
-              onClose={() => setActiveIndex(null)}
-            />
+            <ExpandedCard p={products[activeIndex]} onClose={() => setActiveIndex(null)} />
           )}
         </AnimatePresence>
       </LayoutGroup>
