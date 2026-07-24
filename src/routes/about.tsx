@@ -270,7 +270,6 @@ function AboutPage() {
               to="/contact"
               className="rounded-full border border-black/8 bg-black/[0.02] hover:bg-black/[0.04] px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-foreground transition-all inline-block"
             >
-              Get In Touch
             </Link>
           </div>
         </motion.div>

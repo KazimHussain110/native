@@ -25,7 +25,7 @@ export function Contact() {
           </h2>
           <p className="mt-6 max-w-lg text-muted-foreground">
             Questions about which product is right for you? Want to know more about our sourcing or
-            testing? We read every message and reply within 24 hours.
+            testing? We read every message.
           </p>
 
           <form className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -106,10 +106,14 @@ const GOLD_TEXT: React.CSSProperties = {
 };
 
 export function Footer({ footerRef }: { footerRef?: React.RefObject<HTMLElement | null> }) {
+  const hasRevealEffect = Boolean(footerRef);
+
   return (
     <footer
       ref={footerRef}
-      className="relative z-0 w-full overflow-hidden bg-[#4a7c52] md:fixed md:bottom-0 md:left-0 md:right-0"
+      className={`relative z-0 w-full overflow-hidden bg-[#4a7c52] ${
+        hasRevealEffect ? "md:fixed md:bottom-0 md:left-0 md:right-0" : ""
+      }`}
       style={{
         backgroundImage: "url('/footer-bg.png')",
         backgroundSize: "cover",
