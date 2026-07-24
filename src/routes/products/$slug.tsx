@@ -9,7 +9,7 @@ import { CursorGlow } from "@/components/site/CursorGlow";
 export const products = [
   {
     slug: "pure-shilajit-resin",
-    title: "Pure Shilajit Resin",
+    title: "Shilajit Resin",
     img: "/products/01.png",
     price: "$49.99",
     rating: 4.9,
@@ -36,7 +36,7 @@ export const products = [
   },
   {
     slug: "ritual-bundle",
-    title: "The Ritual Bundle",
+    title: "  Ritual Bundle",
     img: "/products/01.png",
     price: "$99.99",
     rating: 5.0,

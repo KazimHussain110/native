@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform, AnimatePresence, LayoutGroup } from "motion/react";
-import { useRef, useState } from "react";
+import { motion, AnimatePresence, LayoutGroup } from "motion/react";
+import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { products } from "@/routes/products/$slug";
 
@@ -63,7 +63,7 @@ function ProductCard({
       animate={{ opacity: dimmed ? 0.35 : 1, scale: dimmed ? 0.97 : 1 }}
       transition={SPRING}
       style={{ borderRadius: 24 }}
-      className="group relative flex flex-col overflow-hidden md:cursor-pointer"
+      className="group relative flex flex-col overflow-hidden border border-emerald/40 transition-colors hover:border-emerald/70 md:cursor-pointer"
     >
       {/* Image — white bg */}
       <div className="relative flex h-48 w-full items-center justify-center rounded-t-3xl bg-white p-5 md:h-64 md:p-8">
@@ -73,7 +73,6 @@ function ProductCard({
           alt={p.title}
           transition={SPRING}
           style={{ width: 130, height: 170, objectFit: "contain" }}
-          className="drop-shadow-[0_25px_25px_oklch(0_0_0/0.45)]"
         />
       </div>
 
@@ -150,8 +149,7 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2, delay: 0.25 }}
           >
-            <p className="text-[10px] uppercase tracking-[0.35em] text-gold/70">{p.tag}</p>
-            <h2 className="mt-3 text-4xl md:text-5xl">{p.title}</h2>
+            <h2 className="text-4xl md:text-5xl">{p.title}</h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
           </motion.div>
 
@@ -162,26 +160,9 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
               alt={p.title}
               transition={SPRING}
               style={{ width: 180, height: 220, objectFit: "contain" }}
-              className="drop-shadow-[0_30px_40px_oklch(0_0_0/0.5)]"
             />
           </div>
 
-          <motion.div
-            className="flex flex-wrap gap-2"
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25, delay: 0.3 }}
-          >
-            {p.details.map((d) => (
-              <span
-                key={d}
-                className="rounded-full border border-black/8 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
-              >
-                {d}
-              </span>
-            ))}
-          </motion.div>
         </div>
 
         {/* Right — price + actions */}
@@ -244,23 +225,16 @@ function ExpandedCard({ p, onClose }: { p: (typeof products)[number]; onClose: (
 }
 
 export function ProductShowcase() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [80, -80]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section id="products" ref={ref} className="relative overflow-hidden py-32 md:py-40">
-      <motion.div style={{ y }} className="pointer-events-none absolute inset-0 -z-10">
-        <div className="hero-glow-emerald absolute left-1/2 top-40 h-[600px] w-[600px] -translate-x-1/2 rounded-full opacity-40" />
-      </motion.div>
-
+    <section id="products" className="relative overflow-hidden py-32 md:py-40">
       <SectionHeading
         eyebrow="The Collection"
         title={
-          <>
-            <span style={{ color: "#4a7c52" }}>Featured products</span>.
-          </>
+          <span className="whitespace-nowrap" style={{ color: "#4a7c52" }}>
+            Featured products.
+          </span>
         }
       />
 

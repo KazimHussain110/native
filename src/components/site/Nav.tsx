@@ -1,6 +1,16 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ShoppingCart, Heart } from "lucide-react";
+import {
+  ArrowUpRight,
+  Facebook,
+  Heart,
+  Instagram,
+  Linkedin,
+  Menu,
+  ShoppingCart,
+  X,
+  Youtube,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { useStore } from "@/lib/store";
 
@@ -19,8 +29,25 @@ const NAV = [
   { label: "Contact", href: "/contact" },
 ];
 
+function PinterestIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+    </svg>
+  );
+}
+
+const SOCIALS = [
+  { name: "Facebook", icon: Facebook },
+  { name: "Instagram", icon: Instagram },
+  { name: "YouTube", icon: Youtube },
+  { name: "LinkedIn", icon: Linkedin },
+  { name: "Pinterest", icon: PinterestIcon },
+];
+
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [overHero, setOverHero] = useState(true);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#products");
@@ -31,6 +58,7 @@ export function Nav() {
     const onScroll = () => {
       const y = window.scrollY;
       setScrolled(y > 20);
+      setOverHero(y < Math.max(80, window.innerHeight - 120));
       setHidden(y > lastY && y > 80);
       lastY = y;
     };
@@ -75,7 +103,11 @@ export function Nav() {
         {/* Mobile menu */}
         <button
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 place-items-center rounded-full text-foreground md:hidden"
+          className={`grid h-10 w-10 place-items-center rounded-full transition-colors md:hidden ${
+            overHero
+              ? "text-white hover:text-white/75"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
           aria-label="Toggle menu"
           aria-expanded={open}
         >
@@ -84,7 +116,7 @@ export function Nav() {
 
         {/* Logo */}
         <a href="/" className="flex min-w-0 items-center justify-self-center md:justify-self-auto">
-          <img src="/logo.png" alt="Native Rituals" className="h-9 w-auto max-w-full md:h-12" />
+          <img src="/logo.png" alt="Native Rituals" className="h-11 w-auto max-w-full md:h-12" />
         </a>
 
         {/* Desktop nav */}
@@ -93,7 +125,11 @@ export function Nav() {
             <a
               key={item.href}
               href={item.href}
-              className="group relative rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground"
+              className={`group relative rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] transition-colors ${
+                overHero
+                  ? "text-white/80 hover:text-white"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
               <span className="relative">
                 {item.label}
@@ -112,7 +148,11 @@ export function Nav() {
           {/* Wishlist */}
           <Link
             to="/wishlist"
-            className="relative hidden h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-black/5 hover:text-gold md:grid"
+            className={`relative hidden h-10 w-10 place-items-center rounded-full transition-colors md:grid ${
+              overHero
+                ? "text-white/80 hover:bg-white/10 hover:text-white"
+                : "text-muted-foreground hover:bg-black/5 hover:text-gold"
+            }`}
           >
             <Heart className="h-4 w-4" />
             {wishlist.length > 0 && (
@@ -125,7 +165,11 @@ export function Nav() {
           {/* Cart */}
           <Link
             to="/cart"
-            className="relative hidden h-10 w-10 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-black/5 hover:text-gold md:grid"
+            className={`relative hidden h-10 w-10 place-items-center rounded-full transition-colors md:grid ${
+              overHero
+                ? "text-white/80 hover:bg-white/10 hover:text-white"
+                : "text-muted-foreground hover:bg-black/5 hover:text-gold"
+            }`}
           >
             <ShoppingCart className="h-4 w-4" />
             {cart.length > 0 && (
@@ -148,7 +192,11 @@ export function Nav() {
         {/* Mobile cart */}
         <Link
           to="/cart"
-          className="relative grid h-10 w-10 place-items-center rounded-full text-foreground md:hidden"
+          className={`relative grid h-10 w-10 place-items-center rounded-full transition-colors md:hidden ${
+            overHero
+              ? "text-white hover:text-white/75"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
           aria-label={`Cart${cart.length > 0 ? `, ${cart.length} items` : ""}`}
         >
           <ShoppingCart className="h-5 w-5" />
@@ -164,37 +212,96 @@ export function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="glass-strong mx-0 mt-2 w-full max-w-full overflow-hidden rounded-3xl p-4 md:hidden"
+            initial={{ opacity: 0, y: -12, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="relative mx-0 mt-2 min-h-[72svh] max-h-[calc(100svh-6.5rem)] w-full max-w-full overflow-y-auto rounded-[1.75rem] bg-[color-mix(in_oklab,var(--gold-soft)_10%,var(--background))] p-5 shadow-[0_28px_80px_rgba(18,45,28,.18)] md:hidden"
           >
-            <div className="flex flex-col">
-              {NAV.map((n) => (
-                <a
-                  key={n.href}
-                  href={n.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-2xl px-4 py-3 text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground hover:bg-black/5 hover:text-gold"
-                >
-                  {n.label}
-                </a>
-              ))}
-              <div className="mt-2 flex gap-2 border-t border-black/5 pt-3">
+            <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
+              <div className="absolute -right-20 -top-24 h-56 w-56 rounded-full bg-gold/12 blur-3xl" />
+              <div className="absolute -bottom-24 -left-20 h-52 w-52 rounded-full bg-emerald/8 blur-3xl" />
+            </div>
+
+            <div className="relative flex min-h-[calc(72svh-2.5rem)] flex-col">
+              <nav className="flex flex-col">
+                {NAV.map((n, index) => (
+                  <motion.a
+                    key={n.href}
+                    href={n.href}
+                    onClick={() => setOpen(false)}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      delay: 0.05 + index * 0.045,
+                      duration: 0.28,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="group flex items-center rounded-2xl px-3 py-4 text-emerald-deep transition-colors hover:bg-emerald/5 hover:text-gold"
+                  >
+                    <span
+                      className="flex-1 text-[1.65rem] leading-none"
+                      style={{ fontFamily: "var(--font-display)" }}
+                    >
+                      {n.label}
+                    </span>
+                    <ArrowUpRight className="h-4 w-4 text-emerald/50 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold" />
+                  </motion.a>
+                ))}
+              </nav>
+
+              <div className="mt-auto">
+                <div className="mb-4 px-2">
+                  <div className="flex justify-center gap-2">
+                    {SOCIALS.map((social) => (
+                      <a
+                        key={social.name}
+                        href="#"
+                        aria-label={social.name}
+                        className="grid h-9 w-9 place-items-center rounded-full bg-emerald/6 text-emerald transition-colors hover:bg-emerald/12 hover:text-gold"
+                      >
+                        <social.icon className="h-4 w-4" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2">
                 <Link
                   to="/wishlist"
                   onClick={() => setOpen(false)}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs text-muted-foreground hover:bg-black/5 hover:text-gold"
+                  className="flex min-w-0 items-center justify-center gap-2 rounded-xl bg-emerald/5 px-3 py-3 text-[11px] font-semibold text-emerald-deep transition-colors hover:bg-emerald/10 hover:text-gold"
                 >
-                  <Heart className="h-4 w-4" /> Wishlist{" "}
-                  {wishlist.length > 0 && `(${wishlist.length})`}
+                  <Heart className="h-4 w-4 shrink-0 text-gold" />
+                  <span>Wishlist</span>
+                  {wishlist.length > 0 && (
+                    <span className="rounded-full bg-gold px-1.5 py-0.5 text-[8px] font-bold text-ink">
+                      {wishlist.length}
+                    </span>
+                  )}
                 </Link>
                 <Link
                   to="/cart"
                   onClick={() => setOpen(false)}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-2xl px-4 py-3 text-xs text-muted-foreground hover:bg-black/5 hover:text-gold"
+                  className="flex min-w-0 items-center justify-center gap-2 rounded-xl bg-emerald/5 px-3 py-3 text-[11px] font-semibold text-emerald-deep transition-colors hover:bg-emerald/10 hover:text-gold"
                 >
-                  <ShoppingCart className="h-4 w-4" /> Cart {cart.length > 0 && `(${cart.length})`}
+                  <ShoppingCart className="h-4 w-4 shrink-0 text-gold" />
+                  <span>Cart</span>
+                  {cart.length > 0 && (
+                    <span className="rounded-full bg-gold px-1.5 py-0.5 text-[8px] font-bold text-ink">
+                      {cart.length}
+                    </span>
+                  )}
+                </Link>
+                </div>
+
+                <Link
+                  to="/shop"
+                  onClick={() => setOpen(false)}
+                  className="mt-2 flex items-center justify-between rounded-xl bg-emerald-gradient px-4 py-3.5 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_12px_30px_rgba(42,89,55,.18)] transition-opacity hover:opacity-90"
+                >
+                  <span>Shop the collection</span>
+                  <ArrowUpRight className="h-4 w-4" />
                 </Link>
               </div>
             </div>
