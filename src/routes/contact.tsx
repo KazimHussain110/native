@@ -14,7 +14,7 @@ export const Route = createFileRoute("/contact")({
       { title: "Contact — Native Rituals" },
       {
         name: "description",
-        content: "Get in touch with Native Rituals. We reply within 24 hours.",
+        content: "Get in touch with Native Rituals.",
       },
     ],
   }),
@@ -114,7 +114,6 @@ function ContactPage() {
           transition={{ duration: 0.9, ease: [0.2, 0.8, 0.2, 1] }}
           className="mb-20 text-center"
         >
-          <p className="text-[10px] uppercase tracking-[0.45em] text-gold/70">Get in touch</p>
           <h1
             className="mt-4 text-[clamp(3rem,8vw,7rem)] leading-[0.95]"
             style={{ fontFamily: "var(--font-display)" }}
@@ -125,7 +124,7 @@ function ContactPage() {
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-sm text-muted-foreground">
             Questions about products, sourcing, or your order? We read every message and reply
-            within 24 hours.
+            ASAP.
           </p>
         </motion.div>
 
@@ -165,9 +164,6 @@ function ContactPage() {
 
             <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
               <MagneticButton>Send Message →</MagneticButton>
-              <p className="text-xs text-muted-foreground">
-                We reply within <span className="text-gold">24 hours</span>.
-              </p>
             </div>
           </motion.div>
 
@@ -192,8 +188,8 @@ function ContactPage() {
                   value: "hello@nativerituals.co",
                   href: "mailto:hello@nativerituals.co",
                 },
-                { icon: MapPin, label: "Origin", value: "Himalayan Sourced · India" },
-                { icon: Clock, label: "Response time", value: "Within 24 hours" },
+                { icon: MapPin, label: "Origin", value: "United States" },
+                { icon: Clock, label: "Response time", value: "Within 42 hours" },
               ].map(({ icon: Icon, label, value, href }) => (
                 <div key={label} className="flex items-start gap-4">
                   <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full border border-gold/20 bg-gold/5">
