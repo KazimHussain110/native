@@ -5,13 +5,12 @@ import {
   Facebook,
   Heart,
   Instagram,
-  Linkedin,
   Menu,
   ShoppingCart,
   X,
   Youtube,
 } from "lucide-react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useStore } from "@/lib/store";
 
 function useStoreSafe() {
@@ -37,21 +36,31 @@ function PinterestIcon({ className }: { className?: string }) {
   );
 }
 
+function LinkedinIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.047c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.266 2.37 4.266 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM7.119 20.452H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z" />
+    </svg>
+  );
+}
+
 const SOCIALS = [
   { name: "Facebook", icon: Facebook },
   { name: "Instagram", icon: Instagram },
   { name: "YouTube", icon: Youtube },
-  { name: "LinkedIn", icon: Linkedin },
+  { name: "LinkedIn", icon: LinkedinIcon },
   { name: "Pinterest", icon: PinterestIcon },
 ];
 
 export function Nav() {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
   const [scrolled, setScrolled] = useState(false);
   const [overHero, setOverHero] = useState(true);
   const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#products");
   const { cart, wishlist } = useStoreSafe();
+  const useWhiteControls = pathname === "/" && overHero;
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -104,7 +113,7 @@ export function Nav() {
         <button
           onClick={() => setOpen((v) => !v)}
           className={`grid h-10 w-10 place-items-center rounded-full transition-colors md:hidden ${
-            overHero
+            useWhiteControls
               ? "text-white hover:text-white/75"
               : "text-muted-foreground hover:text-foreground"
           }`}
@@ -126,7 +135,7 @@ export function Nav() {
               key={item.href}
               href={item.href}
               className={`group relative rounded-full px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] transition-colors ${
-                overHero
+                useWhiteControls
                   ? "text-white/80 hover:text-white"
                   : "text-muted-foreground hover:text-foreground"
               }`}
@@ -149,7 +158,7 @@ export function Nav() {
           <Link
             to="/wishlist"
             className={`relative hidden h-10 w-10 place-items-center rounded-full transition-colors md:grid ${
-              overHero
+              useWhiteControls
                 ? "text-white/80 hover:bg-white/10 hover:text-white"
                 : "text-muted-foreground hover:bg-black/5 hover:text-gold"
             }`}
@@ -166,7 +175,7 @@ export function Nav() {
           <Link
             to="/cart"
             className={`relative hidden h-10 w-10 place-items-center rounded-full transition-colors md:grid ${
-              overHero
+              useWhiteControls
                 ? "text-white/80 hover:bg-white/10 hover:text-white"
                 : "text-muted-foreground hover:bg-black/5 hover:text-gold"
             }`}
@@ -193,7 +202,7 @@ export function Nav() {
         <Link
           to="/cart"
           className={`relative grid h-10 w-10 place-items-center rounded-full transition-colors md:hidden ${
-            overHero
+            useWhiteControls
               ? "text-white hover:text-white/75"
               : "text-muted-foreground hover:text-foreground"
           }`}
